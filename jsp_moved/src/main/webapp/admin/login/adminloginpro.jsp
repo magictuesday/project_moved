@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="human.dao.ManagerDao" %>
-<%@ page import="human.vo.ManagerVo" %>
+<%@ page import="human.vo.ManagerVO" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +18,7 @@
 			
 			
 			// DTO에 처리할 값을 저장
-			ManagerVo tempvo = new ManagerVo();
+			ManagerVO tempvo = new ManagerVO();
 			tempvo.setName(id);
 			tempvo.setPwd(pw);
 			

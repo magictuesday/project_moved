@@ -213,11 +213,12 @@ section{
             </div>
         </div>
     </div>
+   
     <!-- end row -->
 
-    <div class="row">
+    <div class="row" style="padding-bottom:50px;">
     <div class="col-lg-12">
-        <div class="card">
+        <div class="card" >
             <div class="card-body">
                 <div class="table-responsive project-list">
                     <table class="table project-table table-centered table-nowrap">
@@ -255,7 +256,7 @@ section{
                                     int cost = rs.getInt("COST");
                                     String process = rs.getString("PROCESS");
                             %>
-                                <tr onclick="navigateToDetailPage('<%= orderNo %>');">
+                                <tr class="hover" onclick="navigateToDetailPage('<%= orderNo %>');">
                                     <td><%= orderNo %></td>
                                     <td><%= name %></td>
                                     <td><%= date %></td>
@@ -264,6 +265,13 @@ section{
                                     <td><%= cost %></td>
                                     <td><%= process %></td>
                                 </tr>
+                                <style>
+                                tr.hover:hover{
+                                	background-color:#f3f3f3;
+                                }
+                                </style>
+                                
+                                
                             <%
                                 }
     

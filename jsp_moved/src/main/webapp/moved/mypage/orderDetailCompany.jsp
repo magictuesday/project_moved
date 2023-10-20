@@ -42,7 +42,7 @@
         
         int total_price = rfg_price + wsm_price + chr_price + bed_price + tab_price + tv_price + dist_price;
     %>
-        <h2>상세 정보</h2>
+        <h2 style="text-align:center;">상세 정보</h2>
 	       <table border="1" style="width: 50%; margin: 0 auto;">
 	    <tr>
 	        <th>항목</th>
@@ -100,5 +100,6 @@
         e.printStackTrace();
     }
     %>
+    <h2 style="text-align:center;padding-top: 10px;">M<span style="color:skyblue;">O</span>VED</h2>
 </body>
 </html>

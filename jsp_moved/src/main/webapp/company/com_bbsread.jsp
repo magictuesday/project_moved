@@ -164,60 +164,7 @@ section{
     <!-- board Start -->
     <section>
     <div class="container">
-    <div class="row" style="padding-top:50px; padding-bottom:50px;">
-        <div class="col-xl-3 col-md-6">
-            <div class="card bg-pattern">
-                <div class="card-body">
-                    <div class="float-right">
-                        <i class="fa fa-archive text-primary h4 ml-3"></i>
-                    </div>
-                    
-                    <h5 class="font-size-20 mt-0 pt-1"> 24 </h5>
-
-                    <p class="text-muted mb-0">총 신청</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3 col-md-6">
-            <div class="card bg-pattern">
-                <div class="card-body">
-                    <div class="float-right">
-                        <i class="fa fa-th text-primary h4 ml-3"></i>
-                    </div>
-                    <h5 class="font-size-20 mt-0 pt-1">18</h5>
-                    <p class="text-muted mb-0">완료</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3 col-md-6">
-            <div class="card bg-pattern">
-                <div class="card-body">
-                    <div class="float-right">
-                        <i class="fa fa-file text-primary h4 ml-3"></i>
-                    </div>
-                    <h5 class="font-size-20 mt-0 pt-1">06</h5>
-                    <p class="text-muted mb-0">미처리</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3 col-md-6">
-            <div class="card">
-                <div class="card-body">
-                    <form>
-                        <div class="form-group mb-0">
-                            <label>Search</label>
-                            <div class="input-group mb-0">
-                                <input type="text" class="form-control" placeholder="Search..." aria-describedby="project-search-addon" />
-                                <div class="input-group-append">
-                                    <button class="btn btn-danger" type="button" id="project-search-addon"><i class="fa-solid fa-magnifying-glass"></i></button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+ 
 
     <!-- end row -->
 
@@ -290,63 +237,104 @@ section{
         String destin = rs2.getString("DESTIN");
         int moving_cost = rs2.getInt("moving_cost");
         
+        
         int total_price = refrigerator_price + washing_machine_price + chair_price + bed_price + table_price + tv_price + moving_cost;
     %>
-        <h2>상세 정보</h2>
-	       <table border="1" style="width: 50%; margin: 0 auto;">
+        <h2 style="padding-top:10px; text-align:center;">상세 정보</h2>
+        <style>
+		  table {
+		    
+		    border-collapse: collapse;
+		  }
+		  th{
+		  	border-bottom: 1px solid black;
+		  	
+		  } 
+		  td {
+		    border-bottom: 1px solid #dee2e6;
+		    padding-top:10px;		    
+		    padding-bottom:10px;		    
+		    
+		  }
+		  tr.hover2{
+		  border:1px solid black;
+		  background-color:#f3f3f3;
+		  
+		  }
+		  
+		  tr.hover:hover{
+		  	background-color:#f3f3f3;
+		  	
+		  }
+		</style>
+	    <div class="card" style="background-color:white; width:50%; margin:auto;">
+	       <table style="width: 95%; margin: 0 auto;">
+		<tr class="hover">
+	        <td style="padding-top: 10px; border:none;"><strong>신청자명</strong>  : <%= name %></td>
+	        <td colspan="2" style="border:none;"></td>
+	    </tr>
 	    <tr>
-	        <th>항목</th>
-	        <th>수량</th>
+	        <td ><strong>출발지</strong>  : <br><%= origin %> </td>
+	    	<td></td>
+	    	<td></td>
+	    </tr>
+	        <td style=" padding-bottom: 10px; border-bottom: 1px solid black;"><strong>도착지</strong>  : <br><%= destin %></td>
+	  		<td colspan="2" style="border-bottom: 1px solid black;"></td>
+	    <tr>
+	        <th style="width: 182px;">항목</th>
+	        <th style="width: 212px;">수량</th>
 	        <th>가격</th>
 	    </tr>
-	    <tr>
-	        <td>신청자명</td>
-	        <td colspan="2"><%= name %></td>
-	    </tr>
-	    <tr>
+	    
+	    <tr class="hover">
 	        <td>냉장고</td>
-	        <td><%= refrigerator_quant %></td>
-	        <td><%= refrigerator_price %></td>
+	        <td><%= refrigerator_quant %> EA</td>
+	        <td>₩<%= refrigerator_price %></td>
 	    </tr>
-	    <tr>
+	    <tr class="hover">
 	        <td>세탁기</td>
-	        <td><%= washing_machine_quant %></td>
-	        <td><%= washing_machine_price %></td>
+	        <td><%= washing_machine_quant %> EA</td>
+	        <td>₩ <%= washing_machine_price %></td>
 	    </tr>
-	    <tr>
+	    <tr class="hover">
 	        <td>의자</td>
-	        <td><%= chair_quant %></td>
-	        <td><%= chair_price %></td>
+	        <td><%= chair_quant %> EA</td>
+	        <td>₩ <%= chair_price %></td>
 	    </tr>
-	    <tr>
+	    <tr class="hover">
 	        <td>침대</td>
-	        <td><%= bed_quant %></td>
-	        <td><%= bed_price %></td>
+	        <td><%= bed_quant %> EA</td>
+	        <td>₩ <%= bed_price %></td>
 	    </tr>
-	    <tr>
+	    <tr class="hover">
 	        <td>테이블</td>
-	        <td><%= table_quant %></td>
-	        <td><%= table_price %></td>
+	        <td><%= table_quant %> EA</td>
+	        <td>₩ <%= table_price %></td>
 	    </tr>
-	    <tr>
-	        <td>텔레비전</td>
-	        <td><%= tv_quant %></td>
-	        <td><%= tv_price %></td>
+	    <tr class="hover">
+	        <td style=" border-bottom: 1px solid black;">텔레비전</td>
+	        <td style=" border-bottom: 1px solid black;"><%= tv_quant %> EA</td>
+	        <td style=" border-bottom: 1px solid black;">₩ <%= tv_price %></td>
 	    </tr>
-	     <tr>
-	        <td>운송료</td>
-	        <td colspan="2"><%= moving_cost %></td>
-	    </tr>
-	    <tr>
-	        <td>합계</td>
-	        <td colspan="2"><%= total_price %></td>
+	    
+	     <tr class="hover">
+	        <td style="padding-top:10px;">운송료</td>
+	        <td style="padding-top:10px;"></td>
+	        <td colspan="2" style="padding-top:10px;">₩ <%= moving_cost %></td>
+	    </tr> 
+	    <tr class="hover">
+	        <td style=" border-bottom: 1px solid black;"><strong>합계</strong></td>
+	        <td style=" border-bottom: 1px solid black;"></td>
+	        <td colspan="2" style=" border-bottom: 1px solid black;"><strong>₩ <%= total_price %></strong></td>
 	    </tr>
 	</table>
-			
+	<h2 style="text-align:center;">M<span style="color:skyblue;">O</span>VED</h2>
+		</div>	
 			<div class="board_btns">
 				<form class="control" action="../company/com_board.jsp" method="GET">
 					<input type="hidden" name="page" value="<%=curPage%>">
-					<input class="control_btn" type="submit" value="목록">
+<!-- 					<p style="text-align:right;"><input class="control_btn" type="submit" value="목록"></p> -->
+						<br>
 				</form>
 			</div>
 					</div>
@@ -359,60 +347,62 @@ section{
             <div class="card">
                 <div class="card-body">
                     <div class="table-responsive project-list">
-				
-<h2>업체용 견적 입력창</h2>
+
+<div class="container">				
+<h2 style="text-align:center;">업체용 견적 입력창</h2>
 <form action="estimate_submit.jsp" method="POST">
-  <table border="1" style="width: 50%; margin: 0 auto;">
-    <tr>
+  
+  <table style="width: 50%; margin: 0 auto;">
+    <tr style="background-color:#E0ECF8; border:1px solid black">
       <th>항목</th>
       <th>수량</th>
       <th>가격</th>
     </tr>
-    <tr>
+    <tr class="hover2">
       <td>냉장고</td>
       <td><input type="text" name="refrigerator" id="refrigerator" value="<%= refrigerator_quant %>" style="border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px;" readonly/></td>
       <td><input type="text" id="refrigerator_price" name="refrigerator_price" placeholder="<%= refrigerator_price %>" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" required></td>
     </tr>
-    <tr>
+    <tr class="hover2">
       <td>세탁기</td>
       <td><input type="text" id="washing_machine" name="washing_machine" value="<%= washing_machine_quant %>" style="border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px;" readonly/></td>
       <td><input type="text" id="washing_machine_price" name="washing_machine_price" placeholder="<%= washing_machine_price %>" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" required></td>
     </tr>
-    <tr>
+    <tr class="hover2">
       <td>의자</td>
       <td><input type="text" id="chair" name="chair" value="<%= chair_quant %>" style="border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px;" readonly/></td>
       <td><input type="text" id="chair_price" name="chair_price" placeholder="<%= chair_price %>" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" required></td>
     </tr>
-    <tr>
+    <tr class="hover2">
       <td>침대</td>
       <td><input type="text" id="bed" name="bed" value="<%= bed_quant %>" style="border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px;" readonly/></td>
       <td><input type="text" id="bed_price" name="bed_price" placeholder="<%= bed_price %>" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" required></td>
     </tr>
-    <tr>
+    <tr class="hover2">
       <td>테이블</td>
       <td><input type="text" id="table" name="table" value="<%= table_quant %>" style="border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px;" readonly/></td>
       <td><input type="text" id="table_price" name="table_price" placeholder="<%= table_price %>" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" required></td>
     </tr>
-    <tr>
-      <td>텔레비전</td>
-      <td><input type="text" id="tv" name="tv" value="<%= tv_quant %>" style="border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px;" readonly/></td>
-      <td><input type="text" id="tv_price" name="tv_price" placeholder="<%= tv_price %>" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" required></td>
+    <tr class="hover2">
+      <td style="border-bottom:1px solid black">텔레비전</td>
+      <td style="border-bottom:1px solid black"><input type="text" id="tv" name="tv" value="<%= tv_quant %>" style="border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px;" readonly/></td>
+      <td style="border-bottom:1px solid black"><input type="text" id="tv_price" name="tv_price" placeholder="<%= tv_price %>" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" required></td>
     </tr>
-    <tr>
-      <th>출발지</th>
-      <th>도착지</th>
-      <th>운송료</th>
+    <tr style="border:1px solid black; background-color:#f3f3f3;">
+      <th style="border-bottom:1px solid #dee2e6;">출발지</th>
+      <th style="border-bottom:1px solid #dee2e6;">도착지</th>
+      <th style="border-bottom:1px solid #dee2e6;">운송료</th>
     </tr>
-       <tr>
-      <td><%=origin %></td>
-      <td><%=destin %></td>
-      <td><input type="text" id="distance_price" name="distance_price" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" required></td>
+    <tr style="border:1px solid black; background-color:#f3f3f3;">
+      <td style="border-bottom:1px solid black"><%=origin %></td>
+      <td style="border-bottom:1px solid black"><%=destin %></td>
+      <td style="border-bottom:1px solid black"><input type="text" id="distance_price" name="distance_price" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" required></td>
     </tr>
     
   </table>
    <input type="hidden" name="order_number" value ="<%=orderNo%>">
   <br>
-  <input type="submit" value="견적 제출">
+  <h3 style="text-align:center;"><input type="submit" value="견적 제출"></h3>
 </form>
     <%
         rs.close();
@@ -429,7 +419,7 @@ section{
 		</div>
 	</div>
 	</div>
-
+	</div>
 
     <!-- Footer Start -->
     <div class="container-fluid bg-dark text-white-50 footer pt-5">

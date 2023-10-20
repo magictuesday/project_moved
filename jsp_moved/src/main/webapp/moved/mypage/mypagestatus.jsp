@@ -188,7 +188,7 @@
                             <a href="mypage.jsp"><i class="fa-solid fa-user"></i> 프로필</a>
                         </li>
                         <li class="woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--dashboard is-active">
-                            <a href="mypagestaus.jsp"><i class="fa-solid fa-diagram-project"></i> 진행현황</a>
+                            <a href="mypagestatus.jsp"><i class="fa-solid fa-diagram-project"></i> 진행현황</a>
                         </li>
                         <li class="woocommerce-MyAccount-navigation-link woocommerce-MyAccount-navigation-link--orders">
                             <a href="mypagesetting.jsp"><i class="fa-solid fa-gear"></i> 설정</a>
@@ -202,7 +202,7 @@
                     <p>MYPAGE <strong> 진행현황 </strong></p>
                     <p>진행현황을 확인하세요.</p>
                     <div>
-                        <form class="woocommerce-EditAccountForm edit-account" action="" method="post">
+                        <form class="woocommerce-EditAccountForm edit-account" action="" method="post" style="width:980px;">
                             <h3>신청 내역</h3>
                             <table class="table table-hover table-in-card">
                                 <thead>
@@ -228,7 +228,7 @@
                                         boolean isPrepared = "업체전달".equals(process);
                                 %>
                                     <tr>
-                                        <td><a href="orderDetailUser.jsp?orderNo=<%= orderNo %>" onclick="window.open(this.href, '_blank', 'width=800, height=600'); return false;"><%= orderNo %></a></td>
+                                        <td><a href="orderDetailUser.jsp?orderNo=<%= orderNo %>" onclick="window.open(this.href, '_blank', 'width=800, height=600'); return false;"><i class="fa-regular fa-file-lines"></i>  <%= orderNo %></a></td>
                                         <td><%= mdate %></td>
                                         <td><%= origin %></td>
                                         <td><%= destin %></td>
@@ -264,7 +264,7 @@
                     String selection = rs2.getString("SELECTION");
             %>
             <tr>
-                <td <%= "선정".equals(selection) ? "style='background-color: lightgray;'" : "" %>><a href="orderDetailCompany.jsp?companyName=<%= companyName %>" onclick="window.open(this.href, '_blank', 'width=800, height=600'); return false;"><%= companyName %></a></td>
+                <td <%= "선정".equals(selection) ? "style='background-color: lightgray;'" : "" %>><a href="orderDetailCompany.jsp?companyName=<%= companyName %>" onclick="window.open(this.href, '_blank', 'width=800, height=600'); return false;"><i class="fa-solid fa-file-lines"></i>  <%= companyName %></a></td>
                 <td <%= "선정".equals(selection) ? "style='background-color: lightgray;'" : "" %>><%= totalPrice %></td>
                 <td <%= "선정".equals(selection) ? "style='background-color: lightgray;'" : "" %>><%= selection %></td>
                 <td <%= "선정".equals(selection) ? "style='background-color: lightgray;'" : "" %>>
@@ -277,13 +277,28 @@
             %>
         </tbody>
     </table>
-<button type="button" onclick="openPopup()">업체 선정</button>
+<p style="text-align:right;">
+<button type="button" onclick="openPopup()" >업체 선정</button>
+</p>
+<style>
+button {
+  background-color: skyblue;
+  color: white;
+  border: 0;
+  width: 100px;
+  height: 40px;
 
+  /* hover 적용 */
+  &:hover {
+    background-color: #5882FA;
+  }
+}
+</style>
 </form>
 
 
-                            <hr>
-                            <h2>M<span style="color:skyblue;">O</span>VED</h2>
+                            
+                            <h2 style="text-align:center;padding-top: 20px;">M<span style="color:skyblue;">O</span>VED</h2>
                         </form>
                     </div>
                 </div>

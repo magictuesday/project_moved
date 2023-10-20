@@ -63,13 +63,17 @@
         
         int total_price = refrigerator_price + washing_machine_price + chair_price + bed_price + table_price + tv_price + moving_cost;
     %>
-        <h2>상세 정보</h2>
+        <h2 style="text-align:center;">상세 정보</h2>
 	       <table border="1" style="width: 50%; margin: 0 auto;">
+	    
+	    
 	    <tr>
 	        <th>항목</th>
 	        <th>수량</th>
 	        <th>가격</th>
 	    </tr>
+	    
+	    
 	    <tr>
 	        <td>신청자명</td>
 	        <td colspan="2"><%= name %></td>
@@ -121,5 +125,6 @@
         e.printStackTrace();
     }
     %>
+    <h2 style="text-align:center;padding-top: 10px;">M<span style="color:skyblue;">O</span>VED</h2>
 </body>
 </html>

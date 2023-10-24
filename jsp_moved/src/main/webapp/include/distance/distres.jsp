@@ -159,7 +159,6 @@ String loginLink = "../../moved/login/login.jsp";
 String id = "";
 String name = "";
 MemberVo resultvo = new MemberVo();
-// 세션정보를 확인해서 페이지를 보여줄지 여부를 판단
 if(session.getAttribute("memid")==null){
    loginBtn = "로그인";
    loginLink = "../../moved/login/login.jsp";
@@ -170,12 +169,9 @@ if(session.getAttribute("memid")==null){
    loginBtn = "로그아웃";
    loginLink = "../../moved/login/logout.jsp";
    
-   // 세션이 생성 확인 후 
-   // 지역변수 자리
    MemberDao memdao = new MemberDao();
    resultvo = memdao.getMemberById(id);
    
-   //이름 가져오기
    name = resultvo.getName();     
 }
 request.setCharacterEncoding("UTF-8");
@@ -187,17 +183,16 @@ String destination_front = request.getParameter("destination_address");
 String destination_back = request.getParameter("destination_detail");
 String destination_address = destination_front + " " + destination_back;
 
-//오라클 데이터베이스 연결 설정
 String url = "jdbc:oracle:thin:@localhost:1521:ORCL";
 String user = "jsp";
-String pw = "123456";
+String passwd = "123456";
 
 try {
  // JDBC 드라이버 로드
  Class.forName("oracle.jdbc.driver.OracleDriver");
 
  // 데이터베이스에 연결
- Connection conn = DriverManager.getConnection(url, user, pw);
+ Connection conn = DriverManager.getConnection(url, user, passwd);
 
  // 입력 쿼리
  String originSql = "UPDATE CLIENT SET ORIGIN = (?) WHERE NAME = (?)";
@@ -213,7 +208,6 @@ try {
  pstmtDestin.setString(2, name);
  int rowsAffected2 = pstmtDestin.executeUpdate();
 
- // 연결 및 자원 해제
  pstmtOrigin.close();
  pstmtDestin.close();
  conn.close();
@@ -285,7 +279,6 @@ async function getGeocode_destination(address) {
 	    
 	    if (data.status === "OK") {
 	       	distance = data.rows[0].elements[0].distance.text;
-	        // 거리 값을 비어있는 input 태그(distance_value)의 value에 대입
 	        const distanceValueInput = document.querySelector('input[name="distance_value"]');
 	        if (distanceValueInput) {
 	          distanceValueInput.value = distance;
@@ -293,12 +286,9 @@ async function getGeocode_destination(address) {
 	       	
 	        const duration = data.rows[0].elements[0].duration.text;
 	        console.log(`거리 : `+ distance);
-	        // console.log(`소요 시간: `+ duration);
 
 	        const distanceResult = document.getElementById("distanceResult");
-	        // distanceResult.innerHTML = `거리 : ` + distance;
 	        const durationResult = document.getElementById("durationResult");
-	        // durationResult.innerHTML = `소요 시간 : ` + duration;
 	        
 	      } else {
 	        console.log("거리 및 시간 정보를 가져오지 못했습니다.");

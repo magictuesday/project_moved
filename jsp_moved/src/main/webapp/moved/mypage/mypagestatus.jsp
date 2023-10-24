@@ -146,7 +146,6 @@
     String name = "";
     MemberVo resultvo = null;
 
-    // 세션정보를 확인해서 페이지를 보여줄지 여부를 판단
     if(session.getAttribute("memid") == null){
         loginBtn = "로그인";
         loginLink = "../../moved/login/login.jsp";
@@ -157,7 +156,6 @@
         loginBtn = "로그아웃";
         loginLink = "../../moved/login/logout.jsp";
         
-        // 세션이 생성 확인 후 지역변수 자리
         MemberDao memdao = new MemberDao();
         resultvo = memdao.getMemberById(id);
         name = resultvo.getName(); 
@@ -165,11 +163,11 @@
 
     String url = "jdbc:oracle:thin:@localhost:1521:ORCL";
     String user = "jsp";
-    String pw = "123456";
+    String passwd = "123456";
 
     try {
         Class.forName("oracle.jdbc.driver.OracleDriver");
-        Connection conn = DriverManager.getConnection(url, user, pw);
+        Connection conn = DriverManager.getConnection(url, user, passwd);
         
         String orderNo = "";
         PreparedStatement pstmt = conn.prepareStatement("SELECT ORDER_NO, ID, NAME, TO_CHAR(M_DATE, 'YYYY-MM-DD') AS M_DATE, ORIGIN, DESTIN, MOVING_COST, COST, PROCESS FROM CLIENT WHERE ID = ?");

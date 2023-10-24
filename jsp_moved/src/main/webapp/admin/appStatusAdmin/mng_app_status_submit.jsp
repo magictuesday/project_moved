@@ -12,11 +12,11 @@
 String orderNo = request.getParameter("orderNo");
 String url = "jdbc:oracle:thin:@localhost:1521:orcl";
 String user = "jsp";
-String pw = "123456";
+String passwd = "123456";
 
 try {
     Class.forName("oracle.jdbc.driver.OracleDriver");
-    Connection conn = DriverManager.getConnection(url, user, pw);
+    Connection conn = DriverManager.getConnection(url, user, passwd);
 	String query = "UPDATE CLIENT SET PROCESS ='처리' WHERE ORDER_NO = (?)";
     PreparedStatement pstmt = conn.prepareStatement(query);
     pstmt.setString(1, orderNo);

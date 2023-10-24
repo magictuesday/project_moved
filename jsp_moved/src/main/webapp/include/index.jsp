@@ -73,7 +73,6 @@ a {
 	String loginLink = "../moved/login/login.jsp";
 	String id = "";
 	MemberVo resultvo = new MemberVo();
-	// 세션정보를 확인해서 페이지를 보여줄지 여부를 판단
 	if(session.getAttribute("memid")==null){
 		loginBtn = "로그인";
 		loginLink = "../moved/login/login.jsp";
@@ -84,8 +83,6 @@ a {
 		loginBtn = "로그아웃";
 		loginLink = "../moved/login/logout.jsp";
 		
-		// 세션이 생성 확인 후 
-		// 지역변수 자리
 		MemberDao memdao = new MemberDao();
 		resultvo = memdao.getMemberById(id);
 		
@@ -128,10 +125,8 @@ a {
 </div>
 </header>
 <script>
-  // 로그인 여부를 확인합니다.
   var isLoggedIn = sessionStorage.getItem("memid") != null;
 
-  // 로그아웃 여부에 따라 로그인 링크와 회원가입 링크를 보이거나 숨깁니다.
   var loginLink = document.querySelector(".login a[href='../moved/login/login.jsp']");
   var joinLink = document.querySelector(".login a[href='../moved/join/join.jsp']");
   loginLink.style.display = isLoggedIn ? "block" : "none";

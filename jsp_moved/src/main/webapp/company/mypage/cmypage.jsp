@@ -138,7 +138,6 @@
 	String loginLink = "../../moved/login/login.jsp";
 	String id = "";
 	MemberVo resultvo = new MemberVo();
-	// 세션정보를 확인해서 페이지를 보여줄지 여부를 판단
 	if(session.getAttribute("memid")==null){
 		loginBtn = "로그인";
 		loginLink = "../../moved/login/login.jsp";
@@ -149,8 +148,6 @@
 		loginBtn = "로그아웃";
 		loginLink = "../../moved/login/logout.jsp";
 		
-		// 세션이 생성 확인 후 
-		// 지역변수 자리
 		MemberDao memdao = new MemberDao();
 		resultvo = memdao.getMemberById(id);
 		

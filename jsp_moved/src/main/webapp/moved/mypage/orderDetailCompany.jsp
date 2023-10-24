@@ -10,14 +10,14 @@
 <body>
   <%
     String url = "jdbc:oracle:thin:@localhost:1521:orcl";
-    String username = "jsp";
-    String password = "123456";
+    String user = "jsp";
+    String passwd = "123456";
     String companyName = request.getParameter("companyName");
     
     String query = "SELECT * FROM COMPANY_ESTIMATE WHERE COMPANYNAME = (?)";
     
     try {
-        Connection conn = DriverManager.getConnection(url, username, password);
+        Connection conn = DriverManager.getConnection(url, user, passwd);
         
         PreparedStatement pstmt = conn.prepareStatement(query);
         pstmt.setString(1, companyName);

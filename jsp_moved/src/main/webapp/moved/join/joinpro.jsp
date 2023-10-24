@@ -28,7 +28,7 @@
 		
 		if(result!=0) {
 			// 회원가입완료.html
-			response.sendRedirect("../../moved/join/login.jsp");
+			response.sendRedirect("../../moved/login/login.jsp");
 			
 		}
 		

@@ -95,12 +95,12 @@ a {
 			<!-- 로그인 & 회원가입 -->
 			<% if(session.getAttribute("memid") == null) { %>
 			<li class="login"><a href="<%=loginLink%>"><i class="fa-solid fa-lock"></i> <%=loginBtn%></a></li>
-			<li class="login"><a href="../join/join.jsp"><i class="fa-solid fa-right-to-bracket"></i> 회원가입</a></li>
+			<li class="login"><a href="join/join.jsp"><i class="fa-solid fa-right-to-bracket"></i> 회원가입</a></li>
 			<% } %>		
 			<!-- 로그아웃 & MYPAGE -->
 			<% if(session.getAttribute("memid") != null) { %>
 			<li class="login"><a href="<%=loginLink%>"><i class="fa-solid fa-unlock"></i> <%=loginBtn%></a></li>
-			<li class="login"><a href="../mypage/mypage.jsp"><i class="fa-solid fa-house"></i> MYPAGE</a></li>
+			<li class="login"><a href="mypage/mypage.jsp"><i class="fa-solid fa-house"></i> MYPAGE</a></li>
 			<% } %>
 			
 		</ul>
@@ -213,8 +213,13 @@ a {
                     <div class="float-right">
                         <i class="fa fa-archive text-primary h4 ml-3"></i>
                     </div>
-                    
-                    <h5 class="font-size-20 mt-0 pt-1"> 24 </h5>
+                    <%
+						ClientDao cltdao = new ClientDao();
+					
+						int total = cltdao.getClientCount();
+
+					%>
+                    <h5 class="font-size-20 mt-0 pt-1"><%= total %> </h5>
 
                     <p class="text-muted mb-0">총 신청</p>
                 </div>
@@ -226,8 +231,13 @@ a {
                     <div class="float-right">
                         <i class="fa fa-th text-primary h4 ml-3"></i>
                     </div>
-                    <h5 class="font-size-20 mt-0 pt-1">18</h5>
-                    <p class="text-muted mb-0">완료</p>
+                    <%
+						ClientDao cltingdao = new ClientDao();
+					
+						int ing = cltingdao.getClientingCount();
+					%>
+                    <h5 class="font-size-20 mt-0 pt-1"><%= ing %></h5>
+                    <p class="text-muted mb-0">진행중</p>
                 </div>
             </div>
         </div>
@@ -237,8 +247,13 @@ a {
                     <div class="float-right">
                         <i class="fa fa-file text-primary h4 ml-3"></i>
                     </div>
-                    <h5 class="font-size-20 mt-0 pt-1">06</h5>
-                    <p class="text-muted mb-0">미처리</p>
+                    <%
+						ClientDao cltprodao = new ClientDao();
+					
+						int pro = cltprodao.getClientproCount();
+					%>
+                    <h5 class="font-size-20 mt-0 pt-1"><%= pro %></h5>
+                    <p class="text-muted mb-0">완료</p>
                 </div>
             </div>
         </div>
@@ -263,14 +278,14 @@ a {
     <!-- end row -->
 
     <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-12" style="padding-bottom:50px;">
             <div class="card">
                 <div class="card-body">
                     <div class="table-responsive project-list">
                         <table class="table project-table table-centered table-nowrap">
                             <thead>
                                 <tr>
-                                    <th scope="col">no</th>
+                                    <th scope="col">신청번호</th>
                                     <th scope="col">신청자</th>
                                     <th scope="col">출발위치</th>
                                     <th scope="col">도착위치</th>
@@ -300,16 +315,17 @@ a {
 									<td class="post_num"><%= eachvo.getOderno() %></td>
 								<!-- 신청자 -->
 									<td><%-- <a href="../company/com_bbsread.jsp?page=<%=curPage%>&no=<%= eachvo.getOderno() %>"> --%><%= eachvo.getName() %></a></td>
-								<!-- 작성일 -->
 <%-- 									<td class="post_date"><%= eachvo.getMdate() %></td> --%>
+								<!-- 출발위치 -->
 									<td class="post_date"><%= eachvo.getOrigin() %></td>
+								<!-- 도착위치 -->
 									<td class="post_date"><%= eachvo.getDestin() %></td>
-								<!-- 처리/미처리 -->
 									<td> 
                                          <span class="text-success font-12"><i class="mdi mdi-checkbox-blank-circle mr-1"></i>2023-10-11</span>
                                      </td>
-								<!-- 조회수 -->
+								<!-- 금액 -->
 									<td class="post_view"><%= eachvo.getCost() %></td>
+								<!-- 처리분류 -->
 									<td class="post_view"><%= eachvo.getProcess() %></td>
 								</tr>
 							<% 	
@@ -408,18 +424,16 @@ a {
         <div class="container py-5">
             <div class="row g-5">
                 <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.1s">
-                    <a href="../company/index.jsp" class="d-inline-block mb-3">
-                        <h1 class="text-white">AI<span class="text-primary">.</span>Tech</h1>
+                    <a href="../index.html" class="d-inline-block mb-3">
+                        <h1 class="text-white">M<span style="color:skyblue;">O</span><span class="text-white">VED</span></h1>
                     </a>
-                    <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum et tempor sit. Aliqu diam
-                        amet diam et eos labore. Clita erat ipsum et lorem et sit, sed stet no labore lorem sit. Sanctus
-                        clita duo justo et tempor</p>
+                    <p class="mb-0">MOVED는 이사 서비스의 중개만 하고, 계약과 관련된 책임은 운송사업자와 고객 간에 있습니다. 계약 후 의뢰자에게 배정되면, 고객에게 의뢰자 정보를 알려드립니다. 의뢰자는 운송 전날까지 연락 가능합니다.</p>
                 </div>
                 <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.3s">
-                    <h5 class="text-white mb-4">Get In Touch</h5>
-                    <p><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
-                    <p><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
-                    <p><i class="fa fa-envelope me-3"></i>info@example.com</p>
+                    <h5 class="text-white mb-4">MOVED</h5>
+                    <p><i class="fa fa-map-marker-alt me-3"></i>123 Street, Seoul, ROK</p>
+                    <p><i class="fa fa-phone-alt me-3"></i>대표번호 : 1544-0000</p>
+                    <p><i class="fa fa-envelope me-3"></i>Moved@example.com</p>
                     <div class="d-flex pt-2">
                         <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
                         <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
@@ -429,20 +443,20 @@ a {
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.5s">
-                    <h5 class="text-white mb-4">Popular Link</h5>
-                    <a class="btn btn-link" href="">About Us</a>
-                    <a class="btn btn-link" href="">Contact Us</a>
-                    <a class="btn btn-link" href="">Privacy Policy</a>
-                    <a class="btn btn-link" href="">Terms & Condition</a>
-                    <a class="btn btn-link" href="">Career</a>
+                    <h5 class="text-white mb-4">Home</h5>
+                    <a class="btn btn-link" href="">Moved 소개</a>
+                    <a class="btn btn-link" href="">Moved 이사견적</a>
+                    <a class="btn btn-link" href="">신청현황</a>
+                    <a class="btn btn-link" href="">고객센터</a>
+                    <a class="btn btn-link" href="">개인정보 처리방침</a>
                 </div>
                 <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.7s">
                     <h5 class="text-white mb-4">Our Services</h5>
-                    <a class="btn btn-link" href="">Robotic Automation</a>
-                    <a class="btn btn-link" href="">Machine learning</a>
-                    <a class="btn btn-link" href="">Predictive Analysis</a>
-                    <a class="btn btn-link" href="">Data Science</a>
-                    <a class="btn btn-link" href="">Robot Technology</a>
+                    <a class="btn btn-link" href="">Features</a>
+                    <a class="btn btn-link" href="">Our Team</a>
+                    <a class="btn btn-link" href="">FAQs</a>
+                    <a class="btn btn-link" href="">Testimonial</a>
+                    <a class="btn btn-link" href="">404 Page</a>
                 </div>
             </div>
         </div>
@@ -450,10 +464,10 @@ a {
             <div class="copyright">
                 <div class="row">
                     <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        &copy; <a class="border-bottom" href="#">Your Site Name</a>, All Right Reserved.
+                        &copy; Moved since 2023. All rights reserved.
 
                         <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                        Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a> Distributed By <a class="border-bottom" href="https://themewagon.com">ThemeWagon</a>
+                        <!-- Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a> Distributed By <a class="border-bottom" href="https://themewagon.com">ThemeWagon</a>>
                     </div>
                     <div class="col-md-6 text-center text-md-end">
                         <div class="footer-menu">

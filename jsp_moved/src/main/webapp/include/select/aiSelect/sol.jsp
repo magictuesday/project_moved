@@ -386,7 +386,6 @@
 	
 	    reader.readAsDataURL(event.target.files[0]);
 	  }
-    // 이미지 미리보기 크기
     function changeUpload() {
 	  const reader = new FileReader();
 	

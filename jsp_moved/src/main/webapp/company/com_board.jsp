@@ -236,12 +236,12 @@ section{
                         <tbody>
                             <%
                                 String url = "jdbc:oracle:thin:@localhost:1521:orcl";
-                                String username = "jsp";
-                                String password = "123456";
+                                String user = "jsp";
+                                String passwd = "123456";
                             
                                 try {
                                     Class.forName("oracle.jdbc.driver.OracleDriver");
-                                    Connection connection = DriverManager.getConnection(url, username, password);
+                                    Connection connection = DriverManager.getConnection(url, user, passwd);
                                     Statement statement = connection.createStatement();
                                     
                                     String selectDataSQL = "SELECT * FROM CLIENT";

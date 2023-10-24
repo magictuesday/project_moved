@@ -26,7 +26,7 @@ public class BoardDao {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(url, user, passwd);			
 		}catch(Exception e) {
-			System.out.println("오라클접속에러: " + e.getMessage());
+			System.out.println("오라클 접속 에러: " + e.getMessage());
 		}
 	}
 	
@@ -38,7 +38,7 @@ public class BoardDao {
 			if(pstmt!=null) pstmt.close();
 			if(pstmt2!=null) pstmt2.close();
 		}catch(SQLException se) {
-			System.out.println("오라클닫기에게: " + se.getMessage());
+			System.out.println("오라클 접속 해제: " + se.getMessage());
 		}
 	}
 	
@@ -52,7 +52,6 @@ public class BoardDao {
 		getConnect();
 		
 		try {
-			// stmt = conn.createStatement();
 			String sql = "SELECT no, subject, TO_CHAR(regdate, 'yyyy-MM-DD') as regdate, hit FROM bo_notice ORDER BY no DESC OFFSET 10*(?-1) ROWS FETCH NEXT 10 ROWS ONLY";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, Integer.valueOf(curPage));
@@ -70,7 +69,7 @@ public class BoardDao {
 			System.out.println("getBoardListAll 쿼리에러:" + se.getMessage());		
 		}
 		
-		closeConn(); // 항상 반환 처리
+		closeConn();
 		
 		return boardList;
 	}
@@ -79,14 +78,14 @@ public class BoardDao {
 	public int regBoard(BoardVo tempvo) {
 		
 		System.out.println("게시판 전체 목록 가져오기");
-		int rst = 0;	// 0 실패 1 성공
+		int rst = 0;
 		int rst2 = 0;
 		
 		getConnect();
 		
 		try {
 			String sql = "INSERT INTO BO_NOTICE (no, groupno, id, writer, subject, content) VALUES(BO_NOTICE_SEQ.NEXTVAL, BO_NOTICE_SEQ.CURRVAL, 'admin', ?, ?, ?)";
-			conn.setAutoCommit(false); // 쿼리를 실행하고 나서 아직 컴밋은 하지 말라 
+			conn.setAutoCommit(false);
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, tempvo.getWriter());
@@ -94,8 +93,7 @@ public class BoardDao {
 			pstmt.setString(3, tempvo.getContent());
 			rst = pstmt.executeUpdate();
 			
-			// 다른 작업이 있음
-			if(tempvo.getFilename()!=null) { // 첨부파일 있는 경우만
+			if(tempvo.getFilename()!=null) {
 				String sql2 = "INSERT INTO BO_NOTICE_FILE (no, filename, bno) VALUES (BO_NOTICE_FILE_SEQ.NEXTVAL, ?, BO_NOTICE_SEQ.CURRVAL)";
 				pstmt2 = conn.prepareStatement(sql2);
 				pstmt2.setString(1, tempvo.getFilename());
@@ -107,7 +105,6 @@ public class BoardDao {
 			
 		}catch(SQLException se) {
 			System.out.println("regBoard 쿼리에러:" + se.getMessage());
-			// 만약 쿼리가 에러가 나면 롤백
 			try {
 				if(conn!=null) {
 					conn.rollback();
@@ -116,7 +113,6 @@ public class BoardDao {
 				System.out.println("regBoard 롤백에러:" + e.getMessage());	
 			}
 		}finally {
-			//에러가 나든 안 나든 정리할 건 마무리 하시오
 			closeConn();
 		}
 		
@@ -173,16 +169,16 @@ public class BoardDao {
 		try {
 			getConnect();
 			
-			conn.setAutoCommit(false); // 자동 컴밋 잠시 멈춤
+			conn.setAutoCommit(false); 
 			String sql = "DELETE FROM BO_NOTICE WHERE no=?";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, Integer.valueOf(no)); // 문자를 숫자로 변환
-			rst = pstmt.executeUpdate(); // 1-성공, 0-실패
+			pstmt.setInt(1, Integer.valueOf(no)); 
+			rst = pstmt.executeUpdate(); 
 			
 			String sql2 = "DELETE FROM BO_NOTICE_FILE WHERE no=?";
 			pstmt2 = conn.prepareStatement(sql2);
-			pstmt2.setInt(1, Integer.valueOf(no)); // 문자를 숫자로 변환
-			rst2 = pstmt2.executeUpdate();			// 첨부파일일 없으면 삭제해도 0
+			pstmt2.setInt(1, Integer.valueOf(no)); 
+			rst2 = pstmt2.executeUpdate();			
 			
 			conn.commit();
 		}catch(SQLException se) {
@@ -196,8 +192,7 @@ public class BoardDao {
 			closeConn();
 		}
 		
-		return rst+rst2; // 2-성공, 1-첨부파일없는경우, 0-실패
-		
+		return rst+rst2; 
 	}
 	
 	// 게시글 총 페이지 갯수 계산하기
@@ -216,7 +211,6 @@ public class BoardDao {
 				tot = rs.getInt("CNT");
 			}
 			rst = tot / 10;
-			//rst = (tot % 10) == 0 ? rst : rst+1; // 삼항식 
 			if(tot%10 != 0) {
 				rst = rst + 1;
 			}

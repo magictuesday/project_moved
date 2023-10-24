@@ -55,7 +55,6 @@ while (parameterNames.hasMoreElements()) {
                 int subtotalPrice = (int) Math.floor(subtotal);
                 totalAmount += subtotalPrice;
                 
-				// 결과 DB에 저장
     			PreparedStatement pstmt2 = conn.prepareStatement("UPDATE CLIENT SET COST = (?) WHERE NAME = (?)");
     		    pstmt2.setInt(1, totalAmount);
     		    pstmt2.setString(2, name); 		    

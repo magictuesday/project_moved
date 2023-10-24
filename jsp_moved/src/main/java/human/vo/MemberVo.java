@@ -9,10 +9,6 @@ public class MemberVo {
 	private String phone;
 	
 	
-	//zip-num
-	//address
-	//address2
-	
 	public String getId() {
 		return id;
 	}

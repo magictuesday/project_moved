@@ -11,7 +11,6 @@ public class BoardVo {
     private String content;        
     private int hit;  
     private String regdate;
-    // 첨부파일 1개인 경우
     private String filename; 
     
     

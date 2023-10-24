@@ -19,7 +19,7 @@
 		String phone = null;
 		int result = 0;
 		if(session.getAttribute("memid") == null ) {
-			out.println("<script>alert('세션타임 끝났습니다 로그인 후 다시 접속하세요');</script>");
+			out.println("<script>alert('세션이 만료되었습니다. 다시 로그인하시기 바랍니다.');</script>");
 			out.println("<script>location.href='../../moved/login/login.jsp'</script>");
 		}else {
 			id = (String)session.getAttribute("memid");

@@ -232,12 +232,12 @@ int totalPrice = rfgPrice + wsmPrice + chrPrice + bedPrice + tabPrice + tvPrice 
 // 오라클 데이터베이스 연결 설정
 String url = "jdbc:oracle:thin:@localhost:1521:ORCL";
 String user = "jsp";
-String password = "123456";
+String passwd = "123456";
 
 try {
     Class.forName("oracle.jdbc.driver.OracleDriver");
 
-    Connection conn = DriverManager.getConnection(url, user, password);
+    Connection conn = DriverManager.getConnection(url, user, passwd);
 
 	PreparedStatement pstmt = conn.prepareStatement("MERGE INTO COMPANY_ESTIMATE dest USING (SELECT ? AS order_no, ? AS companyname, ? AS rfg_quant, ? AS rfg_price, ? AS wsm_quant, ? AS wsm_price, ? AS chr_quant, ? AS chr_price, ? AS bed_quant, ? AS bed_price, ? AS tab_quant, ? AS tab_price, ? AS tv_quant, ? AS tv_price, ? AS dist_price, ? AS total_price FROM dual) src ON (dest.order_no = src.order_no AND dest.companyname = src.companyname) WHEN MATCHED THEN UPDATE SET dest.rfg_quant = src.rfg_quant, dest.rfg_price = src.rfg_price, dest.wsm_quant = src.wsm_quant, dest.wsm_price = src.wsm_price, dest.chr_quant = src.chr_quant, dest.chr_price = src.chr_price, dest.bed_quant = src.bed_quant, dest.bed_price = src.bed_price, dest.tab_quant = src.tab_quant, dest.tab_price = src.tab_price, dest.tv_quant = src.tv_quant, dest.tv_price = src.tv_price, dest.dist_price = src.dist_price, dest.total_price = src.total_price WHEN NOT MATCHED THEN INSERT (order_no, companyname, rfg_quant, rfg_price, wsm_quant, wsm_price, chr_quant, chr_price, bed_quant, bed_price, tab_quant, tab_price, tv_quant, tv_price, dist_price, total_price) VALUES (src.order_no, src.companyname, src.rfg_quant, src.rfg_price, src.wsm_quant, src.wsm_price, src.chr_quant, src.chr_price, src.bed_quant, src.bed_price, src.tab_quant, src.tab_price, src.tv_quant, src.tv_price, src.dist_price, src.total_price)");
     pstmt.setString(1, orderNo);

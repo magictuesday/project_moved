@@ -54,16 +54,12 @@ public class MemberDao {
 		getConnect();
 		
 		try {
-			// stmt = conn.createStatement();
-			//String sql = "SELECT m_date as mdata,origin,destin,cost,process FROM client";
 			String sql = "SELECT * FROM member";
 			stmt = conn.createStatement();
-			//pstmt.setInt(1, Integer.valueOf(curPage));
 			rs = stmt.executeQuery(sql);
 			while(rs.next()) {
 				MemberVo tempvo = new MemberVo();
-				//System.out.print(rs.getString("m_date"));
-				
+
 				tempvo.setId(rs.getString("id"));		
 				tempvo.setPwd(rs.getString("pwd"));
 				tempvo.setName( rs.getString("name"));
@@ -77,7 +73,7 @@ public class MemberDao {
 			System.out.println("getBoardListAll 쿼리에러:" + se.getMessage());		
 		}
 		
-		closeConn(); // 항상 반환 처리
+		closeConn(); 
 		
 		return memberList;
 	}
@@ -89,7 +85,6 @@ public class MemberDao {
 		System.out.println("회원목록을 가져옴");
 		
 		getConnect();
-		// 쿼리작업
 		
 		closeConn();
 	}
@@ -121,7 +116,6 @@ public class MemberDao {
 		int rst = 0;
 		
 		getConnect(); 
-		// 쿼리작업
 		try {
 			String sql = "SELECT * FROM MEMBER";
 			stmt = conn.createStatement();
@@ -144,7 +138,6 @@ public class MemberDao {
 		
 		getConnect();
 		
-		// 작업
 		try {
 			String sql = "INSERT INTO MEMBER(id, pwd, name, email, phone) VALUES(?,?,?,?,?)";
 			pstmt = conn.prepareStatement(sql);
@@ -168,7 +161,7 @@ public class MemberDao {
 	public int loginCheck(String id, String pw) {
 		
 		System.out.println("회원 정보 인증함");
-		int rst = 0; // 1이면 로그인성공, 0이면 로그인 실패
+		int rst = 0; 
 		
 		getConnect();
 		
@@ -193,7 +186,7 @@ public class MemberDao {
 	public int loginCheck(MemberVo tempvo) {
 		
 		System.out.println("회원 정보 인증함");
-		int rst = 0; // 1이면 로그인성공, 0이면 로그인 실패
+		int rst = 0;
 		
 		getConnect();
 		
@@ -286,9 +279,4 @@ public class MemberDao {
 		return rst;
 	}
 }
-
-
-
-
-
 

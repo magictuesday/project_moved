@@ -19,7 +19,7 @@ public class ManagerDao {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(url, user, passwd);			
 		}catch(Exception e) {
-			System.out.println("오라클접속에러: " + e.getMessage());
+			System.out.println("오라클 접속 해제: " + e.getMessage());
 		}
 
 	}
@@ -31,7 +31,7 @@ public class ManagerDao {
 			if(rs!=null) rs.close();
 			if(pstmt!=null) pstmt.close();
 		}catch(SQLException se) {
-			System.out.println("오라클닫기에게: " + se.getMessage());
+			System.out.println("오라클 접속 에러: " + se.getMessage());
 		}
 	}
 	
@@ -40,7 +40,6 @@ public class ManagerDao {
 		System.out.println("회원목록을 가져옴");
 		
 		getConnect();
-		// 쿼리작업
 		
 		closeConn();
 	}
@@ -51,7 +50,6 @@ public class ManagerDao {
 		int rst = 0;
 		
 		getConnect();
-		// 쿼리작업
 		try {
 			String sql = "SELECT COUNT(*) AS CNT FROM manager";
 			stmt = conn.createStatement();
@@ -75,7 +73,6 @@ public class ManagerDao {
 		
 		getConnect();
 		
-		//작업
 		try {
 			String sql = "INSERT INTO manager (id,pwd,name,phone) VALUES (?,?,?,?)";
 			pstmt = conn.prepareStatement(sql);
@@ -97,7 +94,7 @@ public class ManagerDao {
 	public int loginCheck(String id, String pwd) {
 		
 		System.out.println("회원정보 인증함");
-		int rst = 0;// 1이면 로그인 성공, 0이면 로그인 실패
+		int rst = 0;
 		
 		getConnect();
 		
@@ -118,9 +115,3 @@ public class ManagerDao {
 		return rst;
 	}
 }
-
-
-// 회원테이블에 접속하는 기능
-
-		
-

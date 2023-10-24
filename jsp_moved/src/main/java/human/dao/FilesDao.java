@@ -26,7 +26,7 @@ public class FilesDao {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(url, user, passwd);			
 		}catch(Exception e) {
-			System.out.println("오라클접속에러: " + e.getMessage());
+			System.out.println("오라클 접속 에러: " + e.getMessage());
 		}
 	}
 	
@@ -38,7 +38,7 @@ public class FilesDao {
 			if(pstmt!=null) pstmt.close();
 			if(pstmt2!=null) pstmt2.close();
 		}catch(SQLException se) {
-			System.out.println("오라클닫기에게: " + se.getMessage());
+			System.out.println("오라클 접속 해제: " + se.getMessage());
 		}
 	}
 	

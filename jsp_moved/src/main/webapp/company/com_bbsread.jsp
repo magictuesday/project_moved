@@ -185,8 +185,8 @@ section{
 			<!-- <h5>고객 상세</h5> -->
   <%
     String url = "jdbc:oracle:thin:@localhost:1521:orcl";
-    String username = "jsp";
-    String password = "123456";
+    String user = "jsp";
+    String passwd = "123456";
     String orderNo = request.getParameter("orderNo");
     
     String query = "SELECT " +
@@ -207,7 +207,7 @@ section{
     String query2 = "SELECT * FROM CLIENT WHERE ORDER_NO = ?";
     
     try {
-        Connection conn = DriverManager.getConnection(url, username, password);
+        Connection conn = DriverManager.getConnection(url, user, passwd);
         PreparedStatement pstmt = conn.prepareStatement(query);
         pstmt.setString(1, orderNo);
         

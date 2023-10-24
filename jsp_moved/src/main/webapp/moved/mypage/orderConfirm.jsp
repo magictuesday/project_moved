@@ -10,8 +10,8 @@
 <body>
 <%
 String url = "jdbc:oracle:thin:@localhost:1521:orcl";
-String username = "jsp";
-String password = "123456";
+String user = "jsp";
+String passwd = "123456";
 String companyName = request.getParameter("companyName");
 String orderNo = request.getParameter("orderNo");
 
@@ -19,7 +19,7 @@ String query = "UPDATE COMPANY_ESTIMATE SET SELECTION = '선정' WHERE COMPANYNA
 String query2 = "UPDATE CLIENT SET PROCESS = '업체전달' WHERE ORDER_NO = (?)";
 
 try {
-    Connection conn = DriverManager.getConnection(url, username, password);
+    Connection conn = DriverManager.getConnection(url, user, passwd);
     
     PreparedStatement pstmt = conn.prepareStatement(query);
     pstmt.setString(1, companyName);

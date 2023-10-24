@@ -137,25 +137,21 @@
    loginBtn = "로그아웃";
    loginLink = "../../moved/login/logout.jsp";
    
-   // 세션이 생성 확인 후 
-   // 지역변수 자리
    MemberDao memdao = new MemberDao();
    resultvo = memdao.getMemberById(id);
    
-   //이름 가져오기
    name = resultvo.getName();     
 	}
 	String most1 = request.getParameter("most1");
 	
-	// 오라클 데이터베이스 연결 설정
 	String url = "jdbc:oracle:thin:@localhost:1521:ORCL";
 	String user = "jsp";
-	String password = "123456";
+	String passwd = "123456";
 
 	try {
 	    Class.forName("oracle.jdbc.driver.OracleDriver");
 
-	    Connection conn = DriverManager.getConnection(url, user, password);
+	    Connection conn = DriverManager.getConnection(url, user, passwd);
 	    
 	    PreparedStatement pstmt = conn.prepareStatement("DELETE FROM CLIENT WHERE NAME = (?)");
 	    pstmt.setString(1, name);

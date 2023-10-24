@@ -10,9 +10,6 @@ public class CompanyVo {
 	private String phone;
 	
 	
-	//zip-num
-	//address
-	//address2
 	public String getCompanyname() {
 		return companyname;
 	}

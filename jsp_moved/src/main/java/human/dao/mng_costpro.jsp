@@ -37,7 +37,7 @@
         if (rowsUpdated > 0) {
             out.println("업데이트가 성공적으로 이루어졌습니다.");
         } else {
-            out.println("업데이트에 실패했습니다. 다시 시도하세요.");
+            out.println("업데이트에 실패했습니다.");
         }
     %>
 

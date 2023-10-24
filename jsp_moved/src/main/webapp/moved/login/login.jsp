@@ -80,7 +80,7 @@ a {
 </head>
 <body>
 <!-- partial:index.partial.html -->
-<a href="../../include/index.jsp"><h1>M<span style="color:skyblue; font-size:30px;">O</span>VED</h1></a>
+<a href="../../index.html"><h1>M<span style="color:skyblue; font-size:30px;">O</span>VED</h1></a>
 
 <br>
 <div class="container" id="container">

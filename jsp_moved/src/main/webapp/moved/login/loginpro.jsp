@@ -12,22 +12,17 @@
 	<%
 		String id = request.getParameter("memid");
 		String pw = request.getParameter("mempw");
-		// out.println(id+"<br>");
-		// out.println(pw+"<br>");
 		
-		
-		// DTO에 처리할 값을 저장
 		MemberVo tempvo = new MemberVo();
 		tempvo.setId(id);
 		tempvo.setPwd(pw);
 		
 		MemberDao memdao = new MemberDao();
 		
-		//int result = memdao.loginCheck(id,pw);
 		int result = memdao.loginCheck(tempvo);
 		
 		if(result==1) {
-			session.setAttribute("memid", id); // id는 로그인시 받은 값
+			session.setAttribute("memid", id);
 			out.println("<script>alert('로그인성공')</script>");
 			out.println("<script>location.href='../../include/index.jsp'</script>");
 		}else{

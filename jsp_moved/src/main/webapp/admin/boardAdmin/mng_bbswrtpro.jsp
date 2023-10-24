@@ -18,14 +18,6 @@
 		String content = request.getParameter("content");
 		String filename = request.getParameter("filename");
 		
-		// 첨부파일을 폼에서 넘기는 경우는 request가 동작되지 않음
-
-/*   	out.println(writer+"<br>");
- 		out.println(subject+"<br>");
- 		out.println(content+"<br>");
- 		out.println(filename+"<br>");  */
-
-
 		MultipartRequest multi = null;
 		String savePath="C:/Users/User/Documents/workspace-spring-tool-suite-4-4.19.1.RELEASE/jspwebproject4/src/main/webapp/upload/";
 		int maxsize = 1024*1024*10;
@@ -56,7 +48,6 @@
 		BoardDao bbsdao = new BoardDao();
 		int result = bbsdao.regBoard(tempvo);
 		
-		// 두개의 쿼리 결과가 2면 성공
 		out.println("등록결과 : " + result);
 		
 		if(result==2){

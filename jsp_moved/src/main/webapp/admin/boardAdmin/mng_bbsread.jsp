@@ -62,7 +62,7 @@
                     </div>
                 </div>
                 <div class="dash-nav-dropdown">
-                    <a href="../appStatusAdmin/mng_App_Status.jsp" class="dash-nav-item dash-nav-dropdown-toggle">
+                    <a href="../appStatusAdmin/mng_app_status.jsp" class="dash-nav-item dash-nav-dropdown-toggle">
                         <i class="fas fa-file"></i> 진행현황 </a>
                     <div class="dash-nav-dropdown-menu">
                         <a href="blank.html" class="dash-nav-dropdown-item">진행현황</a>                        

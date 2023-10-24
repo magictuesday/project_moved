@@ -15,13 +15,13 @@
 		BoardDao bbsdao = new BoardDao();
 		int result = bbsdao.delBoardByNo(no);
 		
-		out.println("삭제결과:" + result); // {2- 성공, 1-첨부파일없음 목록이동}, 0- 실패 글읽기로 이동
+		out.println("삭제결과:" + result);
 		
 		if(result==2 || result==1){
 			out.println("<script>alert('게시글 삭제가 완료되었습니다.');</script>");
 			out.println("<script>location.href='mng_board.jsp'</script>");
 		}else{
-			out.println("<script>alert('게시글 삭제가 실패했습니다.');</script>");
+			out.println("<script>alert('게시글 삭제에 실패했습니다.');</script>");
 			out.println("<script>location.href='mng_board.jsp?no='"+ no +"</script>");
 		}
 	%>

@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>달력</title>
+<title>MOVED 이사견적 달력</title>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
@@ -80,6 +80,7 @@ a {
       String id = "";
       String name ="";
       MemberVo resultvo = new MemberVo();
+      // 세션정보를 확인해서 페이지를 보여줄지 여부를 판단
       if(session.getAttribute("memid")==null){
          loginBtn = "로그인";
          loginLink = "../../moved/login/login.jsp";
@@ -90,9 +91,12 @@ a {
          loginBtn = "로그아웃";
          loginLink = "../../moved/login/logout.jsp";
          
+         // 세션이 생성 확인 후 
+         // 지역변수 자리
          MemberDao memdao = new MemberDao();
          resultvo = memdao.getMemberById(id);
          
+         //이름 가져오기
          name = resultvo.getName();     
       }
    %>
@@ -255,8 +259,8 @@ a {
     <div class="container-fluid py-5">
         <div class="container py-5">
             <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 500px;">
-                <div class="btn btn-sm border rounded-pill text-primary px-3 mb-3">Popular FAQs</div>
-                <h1 class="mb-4">Frequently Asked Questions</h1>
+                <div class="btn btn-sm border rounded-pill text-primary px-3 mb-3">FAQs</div>
+                <h1 class="mb-4">자주 묻는 질문</h1>
             </div>
             <div class="row">
                 <div class="col-lg-6">
@@ -265,13 +269,13 @@ a {
                             <h2 class="accordion-header" id="headingOne">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                    How to build a website?
+                                    어떻게 신청하나요?
                                 </button>
                             </h2>
                             <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
                                 data-bs-parent="#accordionFAQ1">
                                 <div class="accordion-body">
-                                    Dolor nonumy tempor elitr et rebum ipsum sit duo duo. Diam sed sed magna et magna diam aliquyam amet dolore ipsum erat duo. Sit rebum magna duo labore no diam.
+                                    회원 가입 후 로그인을 하신 다음 이사 견적 페이지에서 순차적으로 진행하면 됩니다
                                 </div>
                             </div>
                         </div>
@@ -279,13 +283,13 @@ a {
                             <h2 class="accordion-header" id="headingTwo">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    How long will it take to get a new website?
+                                    견적을 받는데 얼마나 걸리나요?
                                 </button>
                             </h2>
                             <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
                                 data-bs-parent="#accordionFAQ1">
                                 <div class="accordion-body">
-                                    Dolor nonumy tempor elitr et rebum ipsum sit duo duo. Diam sed sed magna et magna diam aliquyam amet dolore ipsum erat duo. Sit rebum magna duo labore no diam.
+                                    예상 견적은 즉시 나오나 업체측 실견적은 1~3일 이내에 처리됩니다
                                 </div>
                             </div>
                         </div>
@@ -293,13 +297,13 @@ a {
                             <h2 class="accordion-header" id="headingThree">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                    Do you only create HTML websites?
+                                    사진으로 찍어서 올려도 되나요?
                                 </button>
                             </h2>
                             <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
                                 data-bs-parent="#accordionFAQ1">
                                 <div class="accordion-body">
-                                    Dolor nonumy tempor elitr et rebum ipsum sit duo duo. Diam sed sed magna et magna diam aliquyam amet dolore ipsum erat duo. Sit rebum magna duo labore no diam.
+                                    사진 촬영시 해당 상품만 나오게 명확하게 찍어서 업로드 해주시면 처리됩니다
                                 </div>
                             </div>
                         </div>
@@ -307,13 +311,13 @@ a {
                             <h2 class="accordion-header" id="headingFour">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
-                                    Will my website be mobile-friendly?
+                                    모바일로도 신청 가능한가요?
                                 </button>
                             </h2>
                             <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
                                 data-bs-parent="#accordionFAQ1">
                                 <div class="accordion-body">
-                                    Dolor nonumy tempor elitr et rebum ipsum sit duo duo. Diam sed sed magna et magna diam aliquyam amet dolore ipsum erat duo. Sit rebum magna duo labore no diam.
+                                    모바일에서 즉시 촬영 후 업로드 해서 즉시 견적을 받아보실 수 있습니다.
                                 </div>
                             </div>
                         </div>
@@ -325,13 +329,13 @@ a {
                             <h2 class="accordion-header" id="headingFive">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                                    Will you maintain my site for me?
+                                    진행 사항을 확인 할 수 있나요?
                                 </button>
                             </h2>
                             <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
                                 data-bs-parent="#accordionFAQ2">
                                 <div class="accordion-body">
-                                    Dolor nonumy tempor elitr et rebum ipsum sit duo duo. Diam sed sed magna et magna diam aliquyam amet dolore ipsum erat duo. Sit rebum magna duo labore no diam.
+                                    마이페이지 혹은 신청 현황에서 확인 가능합니다.
                                 </div>
                             </div>
                         </div>
@@ -339,13 +343,13 @@ a {
                             <h2 class="accordion-header" id="headingSix">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-                                    I’m on a strict budget. Do you have any low cost options?
+                                    전화 상담 가능시간은 어떻게 되나요?
                                 </button>
                             </h2>
                             <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix"
                                 data-bs-parent="#accordionFAQ2">
                                 <div class="accordion-body">
-                                    Dolor nonumy tempor elitr et rebum ipsum sit duo duo. Diam sed sed magna et magna diam aliquyam amet dolore ipsum erat duo. Sit rebum magna duo labore no diam.
+                                    평일 오전 9:00 부터 오후 6:00까지 유선 상담 가능합니다.
                                 </div>
                             </div>
                         </div>
@@ -353,13 +357,13 @@ a {
                             <h2 class="accordion-header" id="headingSeven">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
-                                    Will you maintain my site for me?
+                                    사용시 얻는 이점이 뭐가있나요?
                                 </button>
                             </h2>
                             <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven"
                                 data-bs-parent="#accordionFAQ2">
                                 <div class="accordion-body">
-                                    Dolor nonumy tempor elitr et rebum ipsum sit duo duo. Diam sed sed magna et magna diam aliquyam amet dolore ipsum erat duo. Sit rebum magna duo labore no diam.
+                                    업체 견적에따라 고객님이 선택하여 합리적인 가격에 쉽고 빠르게 진행하실 수 있습니다.
                                 </div>
                             </div>
                         </div>
@@ -367,13 +371,13 @@ a {
                             <h2 class="accordion-header" id="headingEight">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
-                                    I’m on a strict budget. Do you have any low cost options?
+                                    이사 항목 이외의 물건들은 어떻게 되나요?
                                 </button>
                             </h2>
                             <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight"
                                 data-bs-parent="#accordionFAQ2">
                                 <div class="accordion-body">
-                                    Dolor nonumy tempor elitr et rebum ipsum sit duo duo. Diam sed sed magna et magna diam aliquyam amet dolore ipsum erat duo. Sit rebum magna duo labore no diam.
+                                    운송시 비용발생이 큰 상품순으로 적용이 되며 일정 크기 이하의 상품은 기존과 동일하게 처리됩니다.
                                 </div>
                             </div>
                         </div>
@@ -393,18 +397,16 @@ a {
         <div class="container py-5">
             <div class="row g-5">
                 <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.1s">
-                    <a href="../../include/index.jsp" class="d-inline-block mb-3">
-                    <h1 class="text-white">M<span style="color:skyblue;">O</span><span class="text-white">VED</span></h1>
+                    <a href="../index.jsp" class="d-inline-block mb-3">
+                        <h1 class="text-white">M<span style="color:skyblue;">O</span><span class="text-white">VED</span></h1>
                     </a>
-                    <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum et tempor sit. Aliqu diam
-                        amet diam et eos labore. Clita erat ipsum et lorem et sit, sed stet no labore lorem sit. Sanctus
-                        clita duo justo et tempor</p>
+                    <p class="mb-0">MOVED는 이사 서비스의 중개만 하고, 계약과 관련된 책임은 운송사업자와 고객 간에 있습니다. 계약 후 의뢰자에게 배정되면, 고객에게 의뢰자 정보를 알려드립니다. 의뢰자는 운송 전날까지 연락 가능합니다.</p>
                 </div>
                 <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.3s">
-                    <h5 class="text-white mb-4">Get In Touch</h5>
-                    <p><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
-                    <p><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
-                    <p><i class="fa fa-envelope me-3"></i>info@example.com</p>
+                    <h5 class="text-white mb-4">MOVED</h5>
+                    <p><i class="fa fa-map-marker-alt me-3"></i>123 Street, Seoul, ROK</p>
+                    <p><i class="fa fa-phone-alt me-3"></i>대표번호 : 1544-0000</p>
+                    <p><i class="fa fa-envelope me-3"></i>Moved@example.com</p>
                     <div class="d-flex pt-2">
                         <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
                         <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
@@ -414,20 +416,20 @@ a {
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.5s">
-                    <h5 class="text-white mb-4">Popular Link</h5>
-                    <a class="btn btn-link" href="">About Us</a>
-                    <a class="btn btn-link" href="">Contact Us</a>
-                    <a class="btn btn-link" href="">Privacy Policy</a>
-                    <a class="btn btn-link" href="">Terms & Condition</a>
-                    <a class="btn btn-link" href="">Career</a>
+                    <h5 class="text-white mb-4">Home</h5>
+                    <a class="btn btn-link" href="">Moved 소개</a>
+                    <a class="btn btn-link" href="">Moved 이사견적</a>
+                    <a class="btn btn-link" href="">신청현황</a>
+                    <a class="btn btn-link" href="">고객센터</a>
+                    <a class="btn btn-link" href="">개인정보 처리방침</a>
                 </div>
                 <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.7s">
                     <h5 class="text-white mb-4">Our Services</h5>
-                    <a class="btn btn-link" href="">Robotic Automation</a>
-                    <a class="btn btn-link" href="">Machine learning</a>
-                    <a class="btn btn-link" href="">Predictive Analysis</a>
-                    <a class="btn btn-link" href="">Data Science</a>
-                    <a class="btn btn-link" href="">Robot Technology</a>
+                    <a class="btn btn-link" href="">Features</a>
+                    <a class="btn btn-link" href="">Our Team</a>
+                    <a class="btn btn-link" href="">FAQs</a>
+                    <a class="btn btn-link" href="">Testimonial</a>
+                    <a class="btn btn-link" href="">404 Page</a>
                 </div>
             </div>
         </div>
@@ -435,10 +437,10 @@ a {
             <div class="copyright">
                 <div class="row">
                     <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        &copy; <a class="border-bottom" href="#">Your Site Name</a>, All Right Reserved.
+                        &copy; Moved since 2023. All rights reserved.
 
                         <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                        Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a> Distributed By <a class="border-bottom" href="https://themewagon.com">ThemeWagon</a>
+                        <!-- Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a> Distributed By <a class="border-bottom" href="https://themewagon.com">ThemeWagon</a>>
                     </div>
                     <div class="col-md-6 text-center text-md-end">
                         <div class="footer-menu">

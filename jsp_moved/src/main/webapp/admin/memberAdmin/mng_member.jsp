@@ -173,7 +173,7 @@
 
                             <button type="button" class="btn btn-primary" onclick="location.href='mng_bbswrite.html'">글등록</button>
                             
-                        </div> <!--  put your rows / columns here -->
+                        </div>
                     </div>
                 </div>
             </main>

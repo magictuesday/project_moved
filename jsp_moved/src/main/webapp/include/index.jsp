@@ -73,6 +73,7 @@ a {
 	String loginLink = "../moved/login/login.jsp";
 	String id = "";
 	MemberVo resultvo = new MemberVo();
+	// 세션정보를 확인해서 페이지를 보여줄지 여부를 판단
 	if(session.getAttribute("memid")==null){
 		loginBtn = "로그인";
 		loginLink = "../moved/login/login.jsp";
@@ -83,6 +84,8 @@ a {
 		loginBtn = "로그아웃";
 		loginLink = "../moved/login/logout.jsp";
 		
+		// 세션이 생성 확인 후 
+		// 지역변수 자리
 		MemberDao memdao = new MemberDao();
 		resultvo = memdao.getMemberById(id);
 		
@@ -125,8 +128,10 @@ a {
 </div>
 </header>
 <script>
+  // 로그인 여부를 확인합니다.
   var isLoggedIn = sessionStorage.getItem("memid") != null;
 
+  // 로그아웃 여부에 따라 로그인 링크와 회원가입 링크를 보이거나 숨깁니다.
   var loginLink = document.querySelector(".login a[href='../moved/login/login.jsp']");
   var joinLink = document.querySelector(".login a[href='../moved/join/join.jsp']");
   loginLink.style.display = isLoggedIn ? "block" : "none";
@@ -193,7 +198,7 @@ a {
                     <h1 class="display-4 text-white mb-4 animated slideInRight">Artificial Intelligence for M<span style="color:skyblue;">O</span>VED</h1>
                     <p class="text-white mb-4 animated slideInRight">"지금 로그인하시면 [이사 비용 견적]을 받으실 수 있습니다!"<br>"게스트 로그인으로 회원 가입 없이 바로 시작해 보세요!"</p>
                     <p class="text-white mb-4 animated slideInRight"> 회원 로그인으로 더 편리하고 풍성한 서비스를 경험하세요 </p>  
-                    <a href="mypage.html" class="btn btn-outline-light py-sm-3 px-sm-5 rounded-pill animated slideInRight">"<%= id %>"님 환영합니다</a>
+                    <a href="../moved/mypage/mypage.jsp" class="btn btn-outline-light py-sm-3 px-sm-5 rounded-pill animated slideInRight">"<%= id %>"님 환영합니다</a>
                 </div>
                 <div class="col-lg-6 align-self-end text-center text-lg-end">
                     <img class="img-fluid" src="../assets/img/메인트럭4.png" alt="" style="padding-bottom:30px;">
@@ -227,7 +232,7 @@ a {
 
     <!-- About Start -->
     <div class="container-fluid py-5">
-        <div class="container">
+        <div class="container py-5">
             <div class="row g-5 align-items-center">
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
                     <div class="about-img">
@@ -236,20 +241,17 @@ a {
                 </div>
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
                     <div class="btn btn-sm border rounded-pill text-primary px-3 mb-3">About Us</div>
-                    <h1 class="mb-4">We Make Your Business Smarter with Artificial Intelligence</h1>
-                    <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum et tempor sit. Aliqu diam
-                        amet diam et eos labore. Clita erat ipsum et lorem et sit, sed stet no labore lorem sit. Sanctus
-                        clita duo justo et tempor eirmod magna dolore erat amet</p>
-                    <p class="mb-4">Aliqu diam amet diam et eos labore. Clita erat ipsum et lorem et sit, sed stet no
-                        labore lorem sit. Sanctus clita duo justo et tempor.</p>
+                    <h1 class="mb-4">간편하고 편리한 이사, <br> M<span style="color:skyblue;">O</span>VED가 도와드립니다.</h1>
+                    <p class="mb-4"> - 알아서 견적, 포장, 운송까지 쉽고 빠르게 이사하세요.<br> - 더욱 안전하고 신속한 이사 서비스. <br> - AI가 알아서 견적을 내드립니다.</p>
+                    <p class="mb-4">고객 맞춤형 이사서비스로, 안전하고 편리한 이사 경험을 선사합니다. <br> 이사 걱정은 이제 그만, [M<span style="color:skyblue;">O</span>VED]가 해결해드립니다.</p>
                     <div class="row g-3">
                         <div class="col-sm-6">
-                            <h6 class="mb-3"><i class="fa fa-check text-primary me-2"></i>Award Winning</h6>
-                            <h6 class="mb-0"><i class="fa fa-check text-primary me-2"></i>Professional Staff</h6>
+                            <h6 class="mb-3"><i class="fa fa-check text-primary me-2"></i>쉽고 빠른 이사</h6>
+                            <h6 class="mb-0"><i class="fa fa-check text-primary me-2"></i>비용 절감</h6>
                         </div>
                         <div class="col-sm-6">
-                            <h6 class="mb-3"><i class="fa fa-check text-primary me-2"></i>24/7 Support</h6>
-                            <h6 class="mb-0"><i class="fa fa-check text-primary me-2"></i>Fair Prices</h6>
+                            <h6 class="mb-3"><i class="fa fa-check text-primary me-2"></i>쉬운 사용방법</h6>
+                            <h6 class="mb-0"><i class="fa fa-check text-primary me-2"></i>편리성</h6>
                         </div>
                     </div>
                     <div class="d-flex align-items-center mt-4">
@@ -266,111 +268,36 @@ a {
     <!-- About End -->
 
 
-    <!-- Service Start -->
-    <div class="container-fluid bg-light mt-5 py-5">
-        <div class="container py-5">
-            <div class="row g-5 align-items-center">
-                <div class="col-lg-5 wow fadeIn" data-wow-delay="0.1s">
-                    <div class="btn btn-sm border rounded-pill text-primary px-3 mb-3">Our Services</div>
-                    <h1 class="mb-4">Our Excellent AI Solutions for Your Business</h1>
-                    <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum et tempor sit. Aliqu diam
-                        amet diam et eos labore. Clita erat ipsum et lorem et sit, sed stet no labore lorem sit. Sanctus
-                        clita duo justo et tempor eirmod magna dolore erat amet</p>
-                    <a class="btn btn-primary rounded-pill px-4" href="">Read More</a>
-                </div>
-                <div class="col-lg-7">
-                    <div class="row g-4">
-                        <div class="col-md-6">
-                            <div class="row g-4">
-                                <div class="col-12 wow fadeIn" data-wow-delay="0.1s">
-                                    <div class="service-item d-flex flex-column justify-content-center text-center rounded">
-                                        <div class="service-icon btn-square">
-                                            <i class="fa fa-robot fa-2x"></i>
-                                        </div>
-                                        <h5 class="mb-3">Robotic Automation</h5>
-                                        <p>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet
-                                            diam sed stet lorem.</p>
-                                        <a class="btn px-3 mt-auto mx-auto" href="">Read More</a>
-                                    </div>
-                                </div>
-                                <div class="col-12 wow fadeIn" data-wow-delay="0.5s">
-                                    <div class="service-item d-flex flex-column justify-content-center text-center rounded">
-                                        <div class="service-icon btn-square">
-                                            <i class="fa fa-power-off fa-2x"></i>
-                                        </div>
-                                        <h5 class="mb-3">Machine learning</h5>
-                                        <p>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet
-                                            diam sed stet lorem.</p>
-                                        <a class="btn px-3 mt-auto mx-auto" href="">Read More</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 pt-md-4">
-                            <div class="row g-4">
-                                <div class="col-12 wow fadeIn" data-wow-delay="0.3s">
-                                    <div class="service-item d-flex flex-column justify-content-center text-center rounded">
-                                        <div class="service-icon btn-square">
-                                            <i class="fa fa-graduation-cap fa-2x"></i>
-                                        </div>
-                                        <h5 class="mb-3">Education & Science</h5>
-                                        <p>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet
-                                            diam sed stet lorem.</p>
-                                        <a class="btn px-3 mt-auto mx-auto" href="">Read More</a>
-                                    </div>
-                                </div>
-                                <div class="col-12 wow fadeIn" data-wow-delay="0.7s">
-                                    <div class="service-item d-flex flex-column justify-content-center text-center rounded">
-                                        <div class="service-icon btn-square">
-                                            <i class="fa fa-brain fa-2x"></i>
-                                        </div>
-                                        <h5 class="mb-3">Predictive Analysis</h5>
-                                        <p>Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet
-                                            diam sed stet lorem.</p>
-                                        <a class="btn px-3 mt-auto mx-auto" href="">Read More</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Service End -->
-
-
     <!-- Feature Start -->
     <div class="container-fluid bg-primary feature pt-5">
         <div class="container pt-5">
             <div class="row g-5">
                 <div class="col-lg-6 align-self-center mb-md-5 pb-md-5 wow fadeIn" data-wow-delay="0.3s">
                     <div class="btn btn-sm border rounded-pill text-white px-3 mb-3">Why Choose Us</div>
-                    <h1 class="text-white mb-4">We're Best in AI Industry with 10 Years of Experience</h1>
-                    <p class="text-light mb-4">Aliqu diam amet diam et eos labore. Clita erat ipsum et lorem et sit, sed
-                        stet no labore lorem sit. Sanctus clita duo justo et tempor</p>
+                    <h1 class="text-white mb-4">1분 만에 무료견적, 3분 만에 이사 예약 가능!</h1>
+                    <p class="text-light mb-4"> MOVED는 고객의 안전과 만족을 최우선으로 생각합니다. 고객님의 이사 계획을 세심하게 듣고, 최적의 서비스를 제공하기 위해 최선을 다하겠습니다.</p>
                     <div class="d-flex align-items-center text-white mb-3">
                         <div class="btn-sm-square bg-white text-primary rounded-circle me-3">
                             <i class="fa fa-check"></i>
                         </div>
-                        <span>Diam dolor diam ipsum et tempor sit</span>
+                        <span>신뢰할 수 있는 MOVED, 빠르고 편리한 이사 서비스! <br> 지금 바로 이용하세요.</span>
                     </div>
                     <div class="d-flex align-items-center text-white mb-3">
                         <div class="btn-sm-square bg-white text-primary rounded-circle me-3">
                             <i class="fa fa-check"></i>
                         </div>
-                        <span>Diam dolor diam ipsum et tempor sit</span>
+                        <span>당신의 이사, MOVED가 책임집니다! 지금 바로 로그인하세요.</span>
                     </div>
                     <div class="d-flex align-items-center text-white mb-3">
                         <div class="btn-sm-square bg-white text-primary rounded-circle me-3">
                             <i class="fa fa-check"></i>
                         </div>
-                        <span>Diam dolor diam ipsum et tempor sit</span>
+                        <span>MOVED는 믿을 수 있는 업체와 빠르고 편리한 이사 서비스를 제공합니다.</span>
                     </div>
                     <div class="row g-4 pt-3">
                         <div class="col-sm-6">
                             <div class="d-flex rounded p-3" style="background: rgba(256, 256, 256, 0.1);">
-                                <i class="fa fa-users fa-3x text-white"></i>
+                                <i class="fa fa-home fa-3x text-white"></i>
                                 <div class="ms-3">
                                     <h2 class="text-white mb-0" data-toggle="counter-up">9999</h2>
                                     <p class="text-white mb-0">Happy Clients</p>
@@ -379,7 +306,7 @@ a {
                         </div>
                         <div class="col-sm-6">
                             <div class="d-flex rounded p-3" style="background: rgba(256, 256, 256, 0.1);">
-                                <i class="fa fa-check fa-3x text-white"></i>
+                                <i class="fa fa-home fa-3x text-white"></i>
                                 <div class="ms-3">
                                     <h2 class="text-white mb-0" data-toggle="counter-up">9999</h2>
                                     <p class="text-white mb-0">Project Complete</p>
@@ -389,7 +316,7 @@ a {
                     </div>
                 </div>
                 <div class="col-lg-6 align-self-end text-center text-md-end wow fadeIn" data-wow-delay="0.5s">
-                    <img class="img-fluid" src="../assets/img/feature.png" alt="">
+                    <img class="img-fluid" src="../assets/img/feature_test.png" alt="">
                 </div>
             </div>
         </div>
@@ -397,59 +324,15 @@ a {
     <!-- Feature End -->
 
 
-    <!-- Case Start -->
-    <div class="container-fluid bg-light py-5">
-        <div class="container py-5">
-            <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 500px;">
-                <div class="btn btn-sm border rounded-pill text-primary px-3 mb-3">Case Study</div>
-                <h1 class="mb-4">Explore Our Recent AI Case Studies</h1>
-            </div>
-            <div class="row g-4">
-                <div class="col-lg-4 wow fadeIn" data-wow-delay="0.3s">
-                    <div class="case-item position-relative overflow-hidden rounded mb-2">
-                        <img class="img-fluid" src="../assets/img/project-1.jpg" alt="">
-                        <a class="case-overlay text-decoration-none" href="">
-                            <small>Robotic Automation</small>
-                            <h5 class="lh-base text-white mb-3">Lorem elitr magna stet eirmod labore amet labore clita
-                            </h5>
-                            <span class="btn btn-square btn-primary"><i class="fa fa-arrow-right"></i></span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 wow fadeIn" data-wow-delay="0.5s">
-                    <div class="case-item position-relative overflow-hidden rounded mb-2">
-                        <img class="img-fluid" src="../assets/img/project-2.jpg" alt="">
-                        <a class="case-overlay text-decoration-none" href="">
-                            <small>Machine learning</small>
-                            <h5 class="lh-base text-white mb-3">Lorem elitr magna stet eirmod labore amet labore clita
-                            </h5>
-                            <span class="btn btn-square btn-primary"><i class="fa fa-arrow-right"></i></span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 wow fadeIn" data-wow-delay="0.7s">
-                    <div class="case-item position-relative overflow-hidden rounded mb-2">
-                        <img class="img-fluid" src="../assets/img/project-3.jpg" alt="">
-                        <a class="case-overlay text-decoration-none" href="">
-                            <small>Predictive Analysis</small>
-                            <h5 class="lh-base text-white mb-3">Lorem elitr magna stet eirmod labore amet labore clita
-                            </h5>
-                            <span class="btn btn-square btn-primary"><i class="fa fa-arrow-right"></i></span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Case End -->
+  
 
 
     <!-- FAQs Start -->
     <div class="container-fluid py-5">
         <div class="container py-5">
             <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 500px;">
-                <div class="btn btn-sm border rounded-pill text-primary px-3 mb-3">Popular FAQs</div>
-                <h1 class="mb-4">Frequently Asked Questions</h1>
+                <div class="btn btn-sm border rounded-pill text-primary px-3 mb-3">FAQs</div>
+                <h1 class="mb-4">자주 묻는 질문</h1>
             </div>
             <div class="row">
                 <div class="col-lg-6">
@@ -458,13 +341,13 @@ a {
                             <h2 class="accordion-header" id="headingOne">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                    How to build a website?
+                                    어떻게 신청하나요?
                                 </button>
                             </h2>
                             <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
                                 data-bs-parent="#accordionFAQ1">
                                 <div class="accordion-body">
-                                    Dolor nonumy tempor elitr et rebum ipsum sit duo duo. Diam sed sed magna et magna diam aliquyam amet dolore ipsum erat duo. Sit rebum magna duo labore no diam.
+                                    회원 가입 후 로그인을 하신 다음 이사 견적 페이지에서 순차적으로 진행하면 됩니다
                                 </div>
                             </div>
                         </div>
@@ -472,13 +355,13 @@ a {
                             <h2 class="accordion-header" id="headingTwo">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    How long will it take to get a new website?
+                                    견적을 받는데 얼마나 걸리나요?
                                 </button>
                             </h2>
                             <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
                                 data-bs-parent="#accordionFAQ1">
                                 <div class="accordion-body">
-                                    Dolor nonumy tempor elitr et rebum ipsum sit duo duo. Diam sed sed magna et magna diam aliquyam amet dolore ipsum erat duo. Sit rebum magna duo labore no diam.
+                                    예상 견적은 즉시 나오나 업체측 실견적은 1~3일 이내에 처리됩니다
                                 </div>
                             </div>
                         </div>
@@ -486,13 +369,13 @@ a {
                             <h2 class="accordion-header" id="headingThree">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                    Do you only create HTML websites?
+                                    사진으로 찍어서 올려도 되나요?
                                 </button>
                             </h2>
                             <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
                                 data-bs-parent="#accordionFAQ1">
                                 <div class="accordion-body">
-                                    Dolor nonumy tempor elitr et rebum ipsum sit duo duo. Diam sed sed magna et magna diam aliquyam amet dolore ipsum erat duo. Sit rebum magna duo labore no diam.
+                                    사진 촬영시 해당 상품만 나오게 명확하게 찍어서 업로드 해주시면 처리됩니다
                                 </div>
                             </div>
                         </div>
@@ -500,13 +383,13 @@ a {
                             <h2 class="accordion-header" id="headingFour">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
-                                    Will my website be mobile-friendly?
+                                    모바일로도 신청 가능한가요?
                                 </button>
                             </h2>
                             <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
                                 data-bs-parent="#accordionFAQ1">
                                 <div class="accordion-body">
-                                    Dolor nonumy tempor elitr et rebum ipsum sit duo duo. Diam sed sed magna et magna diam aliquyam amet dolore ipsum erat duo. Sit rebum magna duo labore no diam.
+                                    모바일에서 즉시 촬영 후 업로드 해서 즉시 견적을 받아보실 수 있습니다.
                                 </div>
                             </div>
                         </div>
@@ -518,13 +401,13 @@ a {
                             <h2 class="accordion-header" id="headingFive">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                                    Will you maintain my site for me?
+                                    진행 사항을 확인 할 수 있나요?
                                 </button>
                             </h2>
                             <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
                                 data-bs-parent="#accordionFAQ2">
                                 <div class="accordion-body">
-                                    Dolor nonumy tempor elitr et rebum ipsum sit duo duo. Diam sed sed magna et magna diam aliquyam amet dolore ipsum erat duo. Sit rebum magna duo labore no diam.
+                                    마이페이지 혹은 신청 현황에서 확인 가능합니다.
                                 </div>
                             </div>
                         </div>
@@ -532,13 +415,13 @@ a {
                             <h2 class="accordion-header" id="headingSix">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-                                    I’m on a strict budget. Do you have any low cost options?
+                                    전화 상담 가능시간은 어떻게 되나요?
                                 </button>
                             </h2>
                             <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix"
                                 data-bs-parent="#accordionFAQ2">
                                 <div class="accordion-body">
-                                    Dolor nonumy tempor elitr et rebum ipsum sit duo duo. Diam sed sed magna et magna diam aliquyam amet dolore ipsum erat duo. Sit rebum magna duo labore no diam.
+                                    평일 오전 9:00 부터 오후 6:00까지 유선 상담 가능합니다.
                                 </div>
                             </div>
                         </div>
@@ -546,13 +429,13 @@ a {
                             <h2 class="accordion-header" id="headingSeven">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
-                                    Will you maintain my site for me?
+                                    사용시 얻는 이점이 뭐가있나요?
                                 </button>
                             </h2>
                             <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven"
                                 data-bs-parent="#accordionFAQ2">
                                 <div class="accordion-body">
-                                    Dolor nonumy tempor elitr et rebum ipsum sit duo duo. Diam sed sed magna et magna diam aliquyam amet dolore ipsum erat duo. Sit rebum magna duo labore no diam.
+                                    업체 견적에따라 고객님이 선택하여 합리적인 가격에 쉽고 빠르게 진행하실 수 있습니다.
                                 </div>
                             </div>
                         </div>
@@ -560,13 +443,13 @@ a {
                             <h2 class="accordion-header" id="headingEight">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
-                                    I’m on a strict budget. Do you have any low cost options?
+                                    이사 항목 이외의 물건들은 어떻게 되나요?
                                 </button>
                             </h2>
                             <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight"
                                 data-bs-parent="#accordionFAQ2">
                                 <div class="accordion-body">
-                                    Dolor nonumy tempor elitr et rebum ipsum sit duo duo. Diam sed sed magna et magna diam aliquyam amet dolore ipsum erat duo. Sit rebum magna duo labore no diam.
+                                    운송시 비용발생이 큰 상품순으로 적용이 되며 일정 크기 이하의 상품은 기존과 동일하게 처리됩니다.
                                 </div>
                             </div>
                         </div>
@@ -578,160 +461,10 @@ a {
     <!-- FAQs Start -->
 
 
-    <!-- Team Start -->
-    <div class="container-fluid bg-light py-5">
-        <div class="container py-5">
-            <div class="row g-5 align-items-center">
-                <div class="col-lg-5 wow fadeIn" data-wow-delay="0.1s">
-                    <div class="btn btn-sm border rounded-pill text-primary px-3 mb-3">Our Team</div>
-                    <h1 class="mb-4">Meet Our Experienced Team Members</h1>
-                    <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum et tempor sit. Aliqu diam
-                        amet diam et eos labore. Clita erat ipsum et lorem et sit, sed stet no labore lorem sit. Sanctus
-                        clita duo justo et tempor eirmod magna dolore erat amet</p>
-                    <a class="btn btn-primary rounded-pill px-4" href="">Read More</a>
-                </div>
-                <div class="col-lg-7">
-                    <div class="row g-4">
-                        <div class="col-md-6">
-                            <div class="row g-4">
-                                <div class="col-12 wow fadeIn" data-wow-delay="0.1s">
-                                    <div class="team-item bg-white text-center rounded p-4 pt-0">
-                                        <img class="img-fluid rounded-circle p-4" src="../assets/img/team-1.jpg" alt="">
-                                        <h5 class="mb-0">Boris Johnson</h5>
-                                        <small>Founder & CEO</small>
-                                        <div class="d-flex justify-content-center mt-3">
-                                            <a class="btn btn-square btn-primary m-1" href=""><i
-                                                    class="fab fa-facebook-f"></i></a>
-                                            <a class="btn btn-square btn-primary m-1" href=""><i
-                                                    class="fab fa-twitter"></i></a>
-                                            <a class="btn btn-square btn-primary m-1" href=""><i
-                                                    class="fab fa-instagram"></i></a>
-                                            <a class="btn btn-square btn-primary m-1" href=""><i
-                                                    class="fab fa-linkedin-in"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 wow fadeIn" data-wow-delay="0.5s">
-                                    <div class="team-item bg-white text-center rounded p-4 pt-0">
-                                        <img class="img-fluid rounded-circle p-4" src="../assets/img/team-2.jpg" alt="">
-                                        <h5 class="mb-0">Adam Crew</h5>
-                                        <small>Executive Manager</small>
-                                        <div class="d-flex justify-content-center mt-3">
-                                            <a class="btn btn-square btn-primary m-1" href=""><i
-                                                    class="fab fa-facebook-f"></i></a>
-                                            <a class="btn btn-square btn-primary m-1" href=""><i
-                                                    class="fab fa-twitter"></i></a>
-                                            <a class="btn btn-square btn-primary m-1" href=""><i
-                                                    class="fab fa-instagram"></i></a>
-                                            <a class="btn btn-square btn-primary m-1" href=""><i
-                                                    class="fab fa-linkedin-in"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 pt-md-4">
-                            <div class="row g-4">
-                                <div class="col-12 wow fadeIn" data-wow-delay="0.3s">
-                                    <div class="team-item bg-white text-center rounded p-4 pt-0">
-                                        <img class="img-fluid rounded-circle p-4" src="../assets/img/team-3.jpg" alt="">
-                                        <h5 class="mb-0">Kate Winslet</h5>
-                                        <small>Co Founder</small>
-                                        <div class="d-flex justify-content-center mt-3">
-                                            <a class="btn btn-square btn-primary m-1" href=""><i
-                                                    class="fab fa-facebook-f"></i></a>
-                                            <a class="btn btn-square btn-primary m-1" href=""><i
-                                                    class="fab fa-twitter"></i></a>
-                                            <a class="btn btn-square btn-primary m-1" href=""><i
-                                                    class="fab fa-instagram"></i></a>
-                                            <a class="btn btn-square btn-primary m-1" href=""><i
-                                                    class="fab fa-linkedin-in"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 wow fadeIn" data-wow-delay="0.7s">
-                                    <div class="team-item bg-white text-center rounded p-4 pt-0">
-                                        <img class="img-fluid rounded-circle p-4" src="../assets/img/team-4.jpg" alt="">
-                                        <h5 class="mb-0">Cody Gardner</h5>
-                                        <small>Project Manager</small>
-                                        <div class="d-flex justify-content-center mt-3">
-                                            <a class="btn btn-square btn-primary m-1" href=""><i
-                                                    class="fab fa-facebook-f"></i></a>
-                                            <a class="btn btn-square btn-primary m-1" href=""><i
-                                                    class="fab fa-twitter"></i></a>
-                                            <a class="btn btn-square btn-primary m-1" href=""><i
-                                                    class="fab fa-instagram"></i></a>
-                                            <a class="btn btn-square btn-primary m-1" href=""><i
-                                                    class="fab fa-linkedin-in"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Team End -->
+    
 
 
-    <!-- Testimonial Start -->
-    <div class="container-xxl py-5">
-        <div class="container py-5">
-            <div class="row g-5">
-                <div class="col-lg-5 wow fadeIn" data-wow-delay="0.1s">
-                    <div class="btn btn-sm border rounded-pill text-primary px-3 mb-3">Testimonial</div>
-                    <h1 class="mb-4">What Say Our Clients!</h1>
-                    <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum et tempor sit. Aliqu diam
-                        amet diam et eos labore. Clita erat ipsum et lorem et sit, sed stet no labore lorem sit. Sanctus
-                        clita duo justo et tempor eirmod magna dolore erat amet</p>
-                    <a class="btn btn-primary rounded-pill px-4" href="">Read More</a>
-                </div>
-                <div class="col-lg-7 wow fadeIn" data-wow-delay="0.5s">
-                    <div class="owl-carousel testimonial-carousel border-start border-primary">
-                        <div class="testimonial-item ps-5">
-                            <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
-                            <p class="fs-4">Aliqu diam amet diam et eos labore. Clita erat ipsum et lorem et sit, sed stet no labore lorem sit. Sanctus clita duo justo et tempor eirmod magna dolore erat amet</p>
-                            <div class="d-flex align-items-center">
-                                <img class="img-fluid flex-shrink-0 rounded-circle" src="../assets/img/testimonial-1.jpg"
-                                    style="width: 60px; height: 60px;">
-                                <div class="ps-3">
-                                    <h5 class="mb-1">Client Name</h5>
-                                    <span>Profession</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="testimonial-item ps-5">
-                            <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
-                            <p class="fs-4">Aliqu diam amet diam et eos labore. Clita erat ipsum et lorem et sit, sed stet no labore lorem sit. Sanctus clita duo justo et tempor eirmod magna dolore erat amet</p>
-                            <div class="d-flex align-items-center">
-                                <img class="img-fluid flex-shrink-0 rounded-circle" src="../assets/img/testimonial-2.jpg"
-                                    style="width: 60px; height: 60px;">
-                                <div class="ps-3">
-                                    <h5 class="mb-1">Client Name</h5>
-                                    <span>Profession</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="testimonial-item ps-5">
-                            <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
-                            <p class="fs-4">Aliqu diam amet diam et eos labore. Clita erat ipsum et lorem et sit, sed stet no labore lorem sit. Sanctus clita duo justo et tempor eirmod magna dolore erat amet</p>
-                            <div class="d-flex align-items-center">
-                                <img class="img-fluid flex-shrink-0 rounded-circle" src="../assets/img/testimonial-3.jpg"
-                                    style="width: 60px; height: 60px;">
-                                <div class="ps-3">
-                                    <h5 class="mb-1">Client Name</h5>
-                                    <span>Profession</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Testimonial End -->
+    
 
 
     <!-- Newsletter Start -->
@@ -763,18 +496,16 @@ a {
         <div class="container py-5">
             <div class="row g-5">
                 <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.1s">
-                    <a href="../includ/index.jsp" class="d-inline-block mb-3">
+                    <a href="index.html" class="d-inline-block mb-3">
                         <h1 class="text-white">M<span style="color:skyblue;">O</span><span class="text-white">VED</span></h1>
                     </a>
-                    <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum et tempor sit. Aliqu diam
-                        amet diam et eos labore. Clita erat ipsum et lorem et sit, sed stet no labore lorem sit. Sanctus
-                        clita duo justo et tempor</p>
+                    <p class="mb-0">MOVED는 이사 서비스의 중개만 하고, 계약과 관련된 책임은 운송사업자와 고객 간에 있습니다. 계약 후 의뢰자에게 배정되면, 고객에게 의뢰자 정보를 알려드립니다. 의뢰자는 운송 전날까지 연락 가능합니다.</p>
                 </div>
                 <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.3s">
-                    <h5 class="text-white mb-4">Get In Touch</h5>
-                    <p><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
-                    <p><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
-                    <p><i class="fa fa-envelope me-3"></i>info@example.com</p>
+                    <h5 class="text-white mb-4">MOVED</h5>
+                    <p><i class="fa fa-map-marker-alt me-3"></i>123 Street, Seoul, ROK</p>
+                    <p><i class="fa fa-phone-alt me-3"></i>대표번호 : 1544-0000</p>
+                    <p><i class="fa fa-envelope me-3"></i>Moved@example.com</p>
                     <div class="d-flex pt-2">
                         <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
                         <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
@@ -784,20 +515,20 @@ a {
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.5s">
-                    <h5 class="text-white mb-4">Popular Link</h5>
-                    <a class="btn btn-link" href="">About Us</a>
-                    <a class="btn btn-link" href="">Contact Us</a>
-                    <a class="btn btn-link" href="">Privacy Policy</a>
-                    <a class="btn btn-link" href="">Terms & Condition</a>
-                    <a class="btn btn-link" href="">Career</a>
+                    <h5 class="text-white mb-4">Home</h5>
+                    <a class="btn btn-link" href="">Moved 소개</a>
+                    <a class="btn btn-link" href="">Moved 이사견적</a>
+                    <a class="btn btn-link" href="">신청현황</a>
+                    <a class="btn btn-link" href="">고객센터</a>
+                    <a class="btn btn-link" href="">개인정보 처리방침</a>
                 </div>
                 <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.7s">
                     <h5 class="text-white mb-4">Our Services</h5>
-                    <a class="btn btn-link" href="">Robotic Automation</a>
-                    <a class="btn btn-link" href="">Machine learning</a>
-                    <a class="btn btn-link" href="">Predictive Analysis</a>
-                    <a class="btn btn-link" href="">Data Science</a>
-                    <a class="btn btn-link" href="">Robot Technology</a>
+                    <a class="btn btn-link" href="">Features</a>
+                    <a class="btn btn-link" href="">Our Team</a>
+                    <a class="btn btn-link" href="">FAQs</a>
+                    <a class="btn btn-link" href="">Testimonial</a>
+                    <a class="btn btn-link" href="">404 Page</a>
                 </div>
             </div>
         </div>
@@ -805,10 +536,10 @@ a {
             <div class="copyright">
                 <div class="row">
                     <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        &copy; <a class="border-bottom" href="#">Your Site Name</a>, All Right Reserved.
+                        &copy; Moved since 2023. All rights reserved.
 
                         <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                        Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a> Distributed By <a class="border-bottom" href="https://themewagon.com">ThemeWagon</a>
+                         <!-- Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a> Distributed By <a class="border-bottom" href="https://themewagon.com">ThemeWagon</a>
                     </div>
                     <div class="col-md-6 text-center text-md-end">
                         <div class="footer-menu">
@@ -817,7 +548,7 @@ a {
                             <a href="">Help</a>
                             <a href="">FAQs</a>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

@@ -4,9 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>소개</title>
     <meta charset="utf-8">
-    <title>AI.Tech - Artificial Intelligence HTML Template</title>
+    <title>MOVED 소개</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -88,12 +87,12 @@ a {
 			<!-- 로그인 & 회원가입 -->
 			<% if(session.getAttribute("memid") == null) { %>
 			<li class="login"><a href="<%=loginLink%>"><i class="fa-solid fa-lock"></i> <%=loginBtn%></a></li>
-			<li class="login"><a href="join.jsp"><i class="fa-solid fa-right-to-bracket"></i> 회원가입</a></li>
+			<li class="login"><a href="join/join.jsp"><i class="fa-solid fa-right-to-bracket"></i> 회원가입</a></li>
 			<% } %>		
 			<!-- 로그아웃 & MYPAGE -->
 			<% if(session.getAttribute("memid") != null) { %>
 			<li class="login"><a href="<%=loginLink%>"><i class="fa-solid fa-unlock"></i> <%=loginBtn%></a></li>
-			<li class="login"><a href="mypage.jsp"><i class="fa-solid fa-house"></i> MYPAGE</a></li>
+			<li class="login"><a href="mypage/mypage.jsp"><i class="fa-solid fa-house"></i> MYPAGE</a></li>
 			<% } %>
 			
 		</ul>
@@ -115,7 +114,7 @@ a {
     <div class="container-fluid sticky-top">
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-dark p-0">
-                <a href="index.html" class="navbar-brand">
+                <a href="../include/index.jsp" class="navbar-brand">
                     <h1 class="text-white">M<span style="color:skyblue;">O</span><span class="text-white">VED</span></h1>
                 </a>
                 <button type="button" class="navbar-toggler ms-auto me-0" data-bs-toggle="collapse"
@@ -127,7 +126,7 @@ a {
                         <a href="../include/index.jsp" class="nav-item nav-link active">Home</a>
                         <a href="../moved/movedint.jsp" class="nav-item nav-link">Moved 소개</a>
                         <a href="../include/calendar/cal.jsp" class="nav-item nav-link">Moved 이사견적</a>
-                        <a href="../moved/board.jsp" class="nav-item nav-link">신청현황</a>
+                        <a href="../moved/statusBoard.jsp" class="nav-item nav-link">신청현황</a>
                         <a href="../moved/board.jsp" class="nav-item nav-link">고객센터</a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
@@ -200,7 +199,7 @@ a {
             <div class="row g-5 align-items-center">
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
                     <div class="about-img">
-                        <img class="img-fluid" src="../assets/img/about-img.jpg">
+                        <img class="img-fluid" src="../assets/img/about-img.png">
                     </div>
                 </div>
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
@@ -239,25 +238,24 @@ a {
                 <div class="col-lg-6 align-self-center mb-md-5 pb-md-5 wow fadeIn" data-wow-delay="0.3s">
                     <div class="btn btn-sm border rounded-pill text-white px-3 mb-3">Why Choose Us</div>
                     <h1 class="text-white mb-4">1분 만에 무료견적, 3분 만에 이사 예약 가능!</h1>
-                    <p class="text-light mb-4">Aliqu diam amet diam et eos labore. Clita erat ipsum et lorem et sit, sed
-                        stet no labore lorem sit. Sanctus clita duo justo et tempor</p>
+                    <p class="text-light mb-4"> MOVED는 고객의 안전과 만족을 최우선으로 생각합니다. 고객님의 이사 계획을 세심하게 듣고, 최적의 서비스를 제공하기 위해 최선을 다하겠습니다.</p>
                     <div class="d-flex align-items-center text-white mb-3">
                         <div class="btn-sm-square bg-white text-primary rounded-circle me-3">
                             <i class="fa fa-check"></i>
                         </div>
-                        <span>Diam dolor diam ipsum et tempor sit</span>
+                        <span>신뢰할 수 있는 MOVED, 빠르고 편리한 이사 서비스! <br> 지금 바로 이용하세요.</span>
                     </div>
                     <div class="d-flex align-items-center text-white mb-3">
                         <div class="btn-sm-square bg-white text-primary rounded-circle me-3">
                             <i class="fa fa-check"></i>
                         </div>
-                        <span>Diam dolor diam ipsum et tempor sit</span>
+                        <span>당신의 이사, MOVED가 책임집니다! 지금 바로 로그인하세요.</span>
                     </div>
                     <div class="d-flex align-items-center text-white mb-3">
                         <div class="btn-sm-square bg-white text-primary rounded-circle me-3">
                             <i class="fa fa-check"></i>
                         </div>
-                        <span>Diam dolor diam ipsum et tempor sit</span>
+                        <span>MOVED는 믿을 수 있는 업체와 빠르고 편리한 이사 서비스를 제공합니다.</span>
                     </div>
                     <div class="row g-4 pt-3">
                         <div class="col-sm-6">
@@ -415,18 +413,16 @@ a {
         <div class="container py-5">
             <div class="row g-5">
                 <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.1s">
-                    <a href="index.html" class="d-inline-block mb-3">
-                        <h1 class="text-white">AI<span class="text-primary">.</span>Tech</h1>
+                    <a href="../include/index.jsp" class="d-inline-block mb-3">
+                        <h1 class="text-white">M<span style="color:skyblue;">O</span><span class="text-white">VED</span></h1>
                     </a>
-                    <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum et tempor sit. Aliqu diam
-                        amet diam et eos labore. Clita erat ipsum et lorem et sit, sed stet no labore lorem sit. Sanctus
-                        clita duo justo et tempor</p>
+                    <p class="mb-0">MOVED는 이사 서비스의 중개만 하고, 계약과 관련된 책임은 운송사업자와 고객 간에 있습니다. 계약 후 의뢰자에게 배정되면, 고객에게 의뢰자 정보를 알려드립니다. 의뢰자는 운송 전날까지 연락 가능합니다.</p>
                 </div>
                 <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.3s">
-                    <h5 class="text-white mb-4">Get In Touch</h5>
-                    <p><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
-                    <p><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
-                    <p><i class="fa fa-envelope me-3"></i>info@example.com</p>
+                    <h5 class="text-white mb-4">MOVED</h5>
+                    <p><i class="fa fa-map-marker-alt me-3"></i>123 Street, Seoul, ROK</p>
+                    <p><i class="fa fa-phone-alt me-3"></i>대표번호 : 1544-0000</p>
+                    <p><i class="fa fa-envelope me-3"></i>Moved@example.com</p>
                     <div class="d-flex pt-2">
                         <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
                         <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
@@ -436,20 +432,20 @@ a {
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.5s">
-                    <h5 class="text-white mb-4">Popular Link</h5>
-                    <a class="btn btn-link" href="">About Us</a>
-                    <a class="btn btn-link" href="">Contact Us</a>
-                    <a class="btn btn-link" href="">Privacy Policy</a>
-                    <a class="btn btn-link" href="">Terms & Condition</a>
-                    <a class="btn btn-link" href="">Career</a>
+                    <h5 class="text-white mb-4">Home</h5>
+                    <a class="btn btn-link" href="">Moved 소개</a>
+                    <a class="btn btn-link" href="">Moved 이사견적</a>
+                    <a class="btn btn-link" href="">신청현황</a>
+                    <a class="btn btn-link" href="">고객센터</a>
+                    <a class="btn btn-link" href="">개인정보 처리방침</a>
                 </div>
                 <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.7s">
                     <h5 class="text-white mb-4">Our Services</h5>
-                    <a class="btn btn-link" href="">Robotic Automation</a>
-                    <a class="btn btn-link" href="">Machine learning</a>
-                    <a class="btn btn-link" href="">Predictive Analysis</a>
-                    <a class="btn btn-link" href="">Data Science</a>
-                    <a class="btn btn-link" href="">Robot Technology</a>
+                    <a class="btn btn-link" href="">Features</a>
+                    <a class="btn btn-link" href="">Our Team</a>
+                    <a class="btn btn-link" href="">FAQs</a>
+                    <a class="btn btn-link" href="">Testimonial</a>
+                    <a class="btn btn-link" href="">404 Page</a>
                 </div>
             </div>
         </div>
@@ -457,10 +453,10 @@ a {
             <div class="copyright">
                 <div class="row">
                     <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        &copy; <a class="border-bottom" href="#">Your Site Name</a>, All Right Reserved.
+                        &copy; Moved since 2023. All rights reserved.
 
                         <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                        Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a> Distributed By <a class="border-bottom" href="https://themewagon.com">ThemeWagon</a>
+                        <!-- Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a> Distributed By <a class="border-bottom" href="https://themewagon.com">ThemeWagon</a>>
                     </div>
                     <div class="col-md-6 text-center text-md-end">
                         <div class="footer-menu">

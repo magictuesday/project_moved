@@ -1,7 +1,6 @@
 package human.dao;
 
 import java.sql.*;
-import human.vo.*;
 
 public class ManagerDao {
 	public static String user = "jsp";

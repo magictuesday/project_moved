@@ -24,7 +24,7 @@
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" >
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Ubuntu:wght@500;700&display=swap"
         rel="stylesheet">
 
@@ -43,28 +43,10 @@
     <link href="../assets/css/style.css" rel="stylesheet">
     
     <!-- fontawesome -->
-	<script src="https://kit.fontawesome.com/0743fc8aa3.js" crossorigin="anonymous"></script>
+	<script src="https://kit.fontawesome.com/0743fc8aa3.js"></script>
 </head>
 
 <body>
-<style>
-section{
-    background:#f3f3f3;
-    
-    color: #616f80;
-}
-.card {
-    border: none;
-    margin-bottom: 24px;
-    -webkit-box-shadow: 0 0 13px 0 rgba(236,236,241,.44);
-    box-shadow: 0 0 13px 0 rgba(236,236,241,.44);
-}
-
-.avatar-xs {
-    height: 2.3rem;
-    width: 2.3rem;
-}
-</style>
 
 <body>
  
@@ -240,6 +222,7 @@ section{
         
         int total_price = refrigerator_price + washing_machine_price + chair_price + bed_price + table_price + tv_price + moving_cost;
     %>
+    
         <h2 style="padding-top:10px; text-align:center;">상세 정보</h2>
         <style>
 		  table {

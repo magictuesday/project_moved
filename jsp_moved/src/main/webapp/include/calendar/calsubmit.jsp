@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>날짜확인</title>
+<title>MOVED 견적방법</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -80,7 +80,7 @@
         <div class="container pt-5">
             <div class="row g-5 pt-5">
                 <div class="col-lg-6 align-self-center text-center text-lg-start mb-lg-5">
-                    <h1 class="display-4 text-white mb-4 animated slideInRight">Our Projects</h1>
+                    <h1 class="display-4 text-white mb-4 animated slideInRight">M<span style="color:skyblue;">O</span>VED 이사견적</h1>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb justify-content-center justify-content-lg-start mb-0">
                             <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
@@ -137,21 +137,25 @@
    loginBtn = "로그아웃";
    loginLink = "../../moved/login/logout.jsp";
    
+   // 세션이 생성 확인 후 
+   // 지역변수 자리
    MemberDao memdao = new MemberDao();
    resultvo = memdao.getMemberById(id);
    
+   //이름 가져오기
    name = resultvo.getName();     
 	}
 	String most1 = request.getParameter("most1");
 	
+	// 오라클 데이터베이스 연결 설정
 	String url = "jdbc:oracle:thin:@localhost:1521:ORCL";
 	String user = "jsp";
-	String passwd = "123456";
+	String password = "123456";
 
 	try {
 	    Class.forName("oracle.jdbc.driver.OracleDriver");
 
-	    Connection conn = DriverManager.getConnection(url, user, passwd);
+	    Connection conn = DriverManager.getConnection(url, user, password);
 	    
 	    PreparedStatement pstmt = conn.prepareStatement("DELETE FROM CLIENT WHERE NAME = (?)");
 	    pstmt.setString(1, name);
@@ -172,7 +176,7 @@
     <div class="container-fluid bg-light py-5">
         <div class="container py-5">
             <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 500px;">
-                <div class="btn btn-sm border rounded-pill text-primary px-3 mb-3">Case Study</div>
+                <div class="btn btn-sm border rounded-pill text-primary px-3 mb-3">Selection</div>
                 <h1 class="mb-4">견적 방법을 선택하세요.</h1>
                 <p> 신 청 자  : "<%=name%>"님</p>
                 <p> 이사희망일 : <%=most1 %></p>

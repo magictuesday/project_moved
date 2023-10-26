@@ -9,7 +9,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
     <script src="../../js/jquery-3.7.0.min.js"></script>
     <!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script> -->
@@ -68,6 +68,7 @@
                 </div>
             </nav>
         </div>
+        </div>
         <div class="dash-app">
             <header class="dash-toolbar">
                 <a href="#!" class="menu-toggle">
@@ -100,6 +101,7 @@
                     </div>
                 </div>
             </header>
+          </div>
             <main class="dash-content">
                 <div class="container-fluid">
                     <h1 class="dash-title">공지사항</h1>
@@ -157,6 +159,7 @@
                 </div>
         </div>
     </div>
+    </main>
     <script src="../../assets/js/admin.js"></script>
 </body>
 
